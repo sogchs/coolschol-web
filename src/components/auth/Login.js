@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import logoCoolSchool from '../../logo-coolSchool.svg';
 import authService from '../../services/auth-service'
+import { withAuthConsumer } from '../../contexts/AuthStore';
 
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -137,4 +138,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withAuthConsumer(Login);
