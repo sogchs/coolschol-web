@@ -1,0 +1,789 @@
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./fonts/icomoon.eot?w37aoe');
+  src:  url('./fonts/icomoon.eot?w37aoe#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?w37aoe') format('truetype'),
+    url('./fonts/icomoon.woff?w37aoe') format('woff'),
+    url('./fonts/icomoon.svg?w37aoe#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 1.8em;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-set-profile:before {
+  content: "\e90f";
+}
+.icon-set-classroom:before {
+  content: "\e910";
+}
+.icon-log-out:before {
+  content: "\e911";
+}
+.icon-test:before {
+  content: "\e90d";
+}
+.icon-evaluation:before {
+  content: "\e90e";
+}
+.icon-home-chip:before {
+  content: "\e90b";
+}
+.icon-home-factory:before {
+  content: "\e90c";
+}
+.icon-apps:before {
+  content: "\e909";
+}
+.icon-conversation:before {
+  content: "\e90a";
+}
+.icon-calendario:before {
+  content: "\e900";
+}
+.icon-aleatorio:before {
+  content: "\e901";
+}
+.icon-ajustes:before {
+  content: "\e902";
+}
+.icon-grupos:before {
+  content: "\e903";
+}
+.icon-cuestionario:before {
+  content: "\e904";
+}
+.icon-logo-coolScool:before {
+  content: "\e905";
+}
+.icon-temporizador:before {
+  content: "\e906";
+}
+.icon-tablon:before {
+  content: "\e907";
+}
+.icon-sonometro:before {
+  content: "\e908";
+}
+
+
+  
+
+
+@media (min-width: 740px) {
+
+.logo{
+    width: 10em;
+    margin: 0 50px 0 30px;
+  }
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+}
+
+.nav-text {
+  font-size: 0.8em;
+  margin-bottom: 0;
+  padding-top: 0.4em;
+}
+
+.student {
+  margin: 8px 4px;
+  padding-top: 5px;
+}
+
+.board-students{
+  margin: 3em;
+}
+
+.student:hover{
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding-top: 5px;
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.student-checked{
+  border: 2px solid lightseagreen;
+  border-radius: 5px;
+}
+
+.avatar-card {
+  position: absolute;
+  width: 4em;
+  margin-left: 20px;
+}
+
+.avatar-points{
+  position: absolute;
+  margin: 81px 0 0 75px;
+  font-size: 0.7em;
+  background-color: green;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 13px;
+}
+
+.student .card {
+  margin: 76px 0 0 0;
+  height: 70px;
+  width: 100px;
+  position: inherit !important;
+}
+
+.card-p {
+  margin: 7px auto;
+  padding-top: 16px;
+}
+
+.card-name{
+  margin-bottom: 0;
+  font-size: 0.9em;
+}
+
+.card-surname{
+  margin-bottom: 0;
+  color: gray;
+  font-size: 0.9em;
+}
+
+.btn-card-class a {
+  font-size: 1.5em;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.img-login{
+  width: 200px;
+  margin-left: 50px;
+  margin-top: 250px;
+}
+
+.img-register{
+  width: 150px;
+  margin-left: 10px;
+  margin-top: 500px;
+}
+
+.card-login {
+  margin-top: 200px;
+}
+
+.card-register {
+  margin-top: 100px;
+}
+
+.container-panel{
+  margin: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.panel{
+  background-color: rgb(206, 206, 206);
+  width: 280px;
+  min-height: 130px;
+  height: fit-content;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.cards-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-text-panel {
+  font-size: 0.9em;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+
+.card-header-text{
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+
+.card-card {
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.add-panel {
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.delete-panel {
+  cursor: pointer;
+  color: aliceblue !important;
+}
+.chat-conversation {
+  padding: 10px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.chat-se {
+  background-color: gainsboro;
+  border-radius: 20px;
+  padding: 5px 20px;
+  background-size: auto;
+  width: fit-content;
+}
+
+.chat-re {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 5px 20px;
+  background-size: auto;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.card-chat {
+  max-height: fit-content;
+  text-decoration-line: none !important;
+  text-decoration: none !important;
+  color: black;
+  padding: 10px;
+}
+
+.chat-text {
+  padding-left: 5px;
+  margin: 0;
+}
+
+
+.btn-add-note{
+  cursor: pointer;
+  color: rgb(30, 163, 183);
+}
+.modal-content-img{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+.modal-content-img:hover{
+  box-shadow: 0 0 2px 1px  rgb(30, 163, 183);
+}
+
+.timer-body {
+  width: 320px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 10px;
+  margin-left: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.crono-num{
+  font-size: 2.7em;
+}
+
+.timer-back{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+.timer-back-time{
+  font-size: 3em
+}
+
+.timer-close{
+  position: absolute;
+  margin-left: 280px;
+  padding: 1px 9px;
+}
+
+.sound-body {
+  width: 320px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 10px;
+  margin-left: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+/* calendario */
+
+#wrap {
+  width: 1500px;
+  margin: 0 auto;
+}
+
+#external-events {
+  float: left;
+  width: 150px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+  text-align: left;
+}
+
+#external-events h4 {
+  font-size: 16px;
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+#external-events .fc-event {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#external-events p {
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
+
+#external-events p input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+#calendar {
+  float: right;
+  width: 900px;
+}
+.mb-20{
+  margin-bottom:20px;
+}
+
+/* ************* PUNTOS *************** */
+.img-pts{
+  width: 70px;
+}
+
+/* *************** LIST ************** */
+.list-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-num{
+  font-size: 4em;
+  background-color: darkgrey;
+  color: white;
+  padding: 26px;
+  border-radius: 100px;
+}
+
+.list-total{
+  position: absolute;
+  margin: 31px 0 0 52px;
+  font-size: 1.5em;
+  background-color: rgb(30, 163, 183);
+  color: white;
+  border-radius: 100px;
+  padding: 8px;
+  border: 4px solid white;
+}
+
+.btn-goClass{
+  width: -webkit-fill-available;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 90px;
+}
+
+.btn-groupP{
+  width: -webkit-fill-available;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: auto;
+  background-color: white;
+}
+
+.list-group{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+}
+
+
+
+@media (max-width: 740px) {
+  .logo{
+      width: 10em;
+      margin: 8px 0;
+    }
+  /* ********* BOARD CLASS ************ */
+  .student {
+    zoom: 68%;
+    margin: 2px 2px;
+    padding-top: 0px;
+  }
+  .board-students {
+    margin: 1.5em;
+  }
+  .student-checked{
+    border: 2px solid lightseagreen;
+    border-radius: 5px;
+  }
+  
+  .avatar-card {
+    position: absolute;
+    width: 4em;
+    margin-left: 20px;
+  }
+  
+  .avatar-points{
+    position: absolute;
+    margin: 81px 0 0 75px;
+    font-size: 0.7em;
+    background-color: green;
+    color: white;
+    padding: 1px 4px;
+    border-radius: 13px;
+  }
+  
+  .student .card {
+    margin: 76px 0 0 0;
+    height: 70px;
+    width: 100px;
+    position: inherit !important;
+  }
+  
+  .card-p {
+    margin: 7px auto;
+    padding-top: 16px;
+  }
+  
+  .card-name{
+    margin-bottom: 0;
+    font-size: 0.9em;
+  }
+  
+  .card-surname{
+    margin-bottom: 0;
+    color: gray;
+    font-size: 0.9em;
+  }
+
+  /* *********** NAVS ************ */
+  .nav-footer{
+    position: fixed;
+    bottom: -1px;
+    width: -webkit-fill-available;
+    padding: 2px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .btn-nav-footer{
+    color:whitesmoke;
+    margin: 8px;
+  }
+  .btn-nav-footer-v{
+    color: rgb(41, 41, 41);
+    margin: 12px 9px;
+  }
+
+  .icon-ajustes:before{
+    font-size: 1.22em;
+  }
+  
+  .btn-nav-footer p{
+    margin: 0;
+    font-weight: 100;
+    font-size: 0.6em;
+  }
+  .dropup .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-left: -2px;
+  }
+  .setting-btn{
+    margin-left: 4px !important;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 3rem;
+    padding: .5rem 0;
+    margin: 0 -13 0 0;
+    text-align: right;
+    list-style: none;
+    background-color:  white;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 2rem;
+    box-shadow: 2px 2px 10px #666;
+  }
+
+  .nav-coll{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .nav-coll i {
+    width: 30px;
+  }
+  .menu-classroom{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .menu-classroom button{
+    margin-top: 10px;
+    font-size: 0.785rem;
+  }
+
+  /* *************** LIST ************** */
+.list-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-num{
+  font-size: 4em;
+  background-color: darkgrey;
+  color: white;
+  padding: 26px;
+  border-radius: 100px;
+}
+
+.list-total{
+  position: absolute;
+  margin: 31px 0 0 52px;
+  font-size: 1.5em;
+  background-color: rgb(30, 163, 183);
+  color: white;
+  border-radius: 100px;
+  padding: 8px;
+  border: 4px solid white;
+}
+
+/* ************* PUNTOS *************** */
+.img-pts{
+  width: 70px;
+}
+
+/* ************* TABLON ****************** */
+.container-columns{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.column-item{
+  width: 340px;
+  min-height: 130px;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid lightgrey;
+}
+.card-item {
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+}
+
+.add-panel {
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.card-item p {
+  margin-bottom: 0;
+}
+.column-delete{
+  color: dimgrey;
+  margin: 5px;
+}
+
+.column-add{
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* ******* CHAT ********* */
+
+.server-header{
+  height: 3em;
+  margin-top: 10px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.server {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.server-card{
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.server-card img{
+  width: 2.3em;
+  height: 3.3em;
+}
+.server-card p{
+  margin-bottom: 0;
+  margin-left: 20px;
+}
+
+.chat{
+  padding: 0 10px;
+}
+
+.conversation{
+  height: 380px;
+}
+
+.write input{
+  height: 50px;
+  margin: 0 auto;
+}
+.message-r{
+  background-color: lightblue;
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 6px 0 ;
+}
+.message-s{
+  background-color: lightgray;
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 6px 0;
+  margin-left: auto;
+}
+
+/* ******** LOGIN & REGISTER *********** */
+.login{
+  width: 90%;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  margin-top: 20px;
+}
+
+.login-body{
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+/* ************* CLASSROOM ************* */
+.classroom{
+  display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.classroom-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: 70px;
+}
+
+.new-classroom-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: auto;
+  padding: 15px 0;
+}
+
+/* *********** SET CLASSROOM *********** */
+.set-classroom{
+  padding: 15px;
+}
+
+.set-tab{
+  background-color: white;
+}
+
+.set-class-student{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 16px;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}
+
+.set-class-date{
+  display: flex;
+  flex-direction: column;
+}
+
+.set-class-icons a{
+  font-size: 1.4em;
+  margin-right: 15px;
+}
+
+.set-class-addStudent{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+}
+
+
+
+}
+
+
+
