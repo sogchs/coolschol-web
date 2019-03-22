@@ -14,6 +14,7 @@ class App extends Component {
        <FooterNav />
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           {/* <PrivateRoute exact path="/" role={"Teacher"} component={} />
           <PrivateRoute exact path="/" role={"Student"} component={} />
           <Redirect to="/not-found"/> */}
