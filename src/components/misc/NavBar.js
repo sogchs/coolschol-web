@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logoCoolSchool from './logo-coolSchool.svg'
+import logoCoolSchool from '../../logo-coolSchool.svg'
 
 class NavBar extends Component {
 
