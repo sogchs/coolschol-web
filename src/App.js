@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
-import NavBar from './components/misc/NavBar';
-import FooterNav from './components/misc/FooterNav';
+import { NavBar, FooterNav} from './components/misc';
+
 
 class App extends Component {
   render() {
