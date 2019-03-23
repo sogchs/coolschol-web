@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
+import { Link, Redirect, withRouter } from 'react-router-dom'
+import authService from '../../services/auth-service';
+import { withAuthConsumer } from '../../contexts/AuthStore';
 
 class FooterNav extends Component {
 
+  handleLogout = () => {
+    authService.logout()
+      .then( () => {
+        this.props.onUserChanged({})
+        this.props.history.push('/login')
+      })
+  }
+
+
   render() {
+
+    const { user, isAuthenticated, isAdmin} = this.props;
 
     return(
       <nav className="nav-footer navbar navbar-dark bg-dark">
@@ -49,7 +63,7 @@ class FooterNav extends Component {
             <button className="btn-nav-footer-v">
               <span className="icon-set-profile"></span>
             </button>
-            <button className="btn-nav-footer-v">
+            <button className="btn-nav-footer-v" onClick={this.handleLogout}>
               <span className="icon-log-out"></span>
             </button> 
           </div>
@@ -59,4 +73,4 @@ class FooterNav extends Component {
   }
 }
 
-export default FooterNav;
+export default withRouter(withAuthConsumer(FooterNav)) ;

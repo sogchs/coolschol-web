@@ -4,6 +4,7 @@ import logoCoolSchool from '../../logo-coolSchool.svg';
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 
+// eslint-disable-next-line no-useless-escape
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 
