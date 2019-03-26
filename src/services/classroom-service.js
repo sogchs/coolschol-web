@@ -8,8 +8,11 @@ const listClassroom = () => http.get('/classroom')
 
 const deleteClassroom = (id) => http.delete(`/classroom/${id}`)
 
+const detailClassroom = (id) => http.get(`/classroom/${id}`)
+
 export default {
   createClassroom,
   listClassroom,
-  deleteClassroom
+  deleteClassroom,
+  detailClassroom
 }

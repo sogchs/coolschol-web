@@ -162,7 +162,11 @@ class Register extends Component {
                   <div className="invalid-feedback">{errors.email}</div>
               </div>
               <div className="form-group">
+<<<<<<< HEAD
                 <label htmlFor="passwordRegister">Password</label>
+=======
+                <label htmlFor="passwordRegister">Password...</label>
+>>>>>>> 2373de2e544637bb3801b3c3d8570e51a8434a32
                 <input type="password" 
                   className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
                   id="passwordRegister"
@@ -190,9 +194,15 @@ class Register extends Component {
               <div className="form-group">
                 <label htmlFor="surnameRegister">Surname</label>
                 <input type="text" 
+<<<<<<< HEAD
                   className={`form-control ${touch.name && errors.name && 'is-invalid'}`} 
                   id="surnameRegister" 
                   name="surname"
+=======
+                  className={`form-control ${touch.surname && errors.surname && 'is-invalid'}`} 
+                  id="surnameRegister" 
+                  surname="name"
+>>>>>>> 2373de2e544637bb3801b3c3d8570e51a8434a32
                   placeholder="Surname..."
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
@@ -224,7 +234,7 @@ class Register extends Component {
                 <div className="invalid-feedback">{errors.role}</div>
               </div>
               
-                <button type="submit" className="btn btn-info w-100 mt-3">Entrar</button>
+                <button type="submit" className="btn btn-info w-100 mt-3">Register</button>
             </form>
             <p className="mx-auto mt-4">Si ya tienes cuenta <Link to='/login'> ENTRA </Link>en tu espacio</p>        
         </div>
