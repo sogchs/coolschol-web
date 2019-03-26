@@ -62,6 +62,7 @@ class Register extends Component {
     isRegistered: false
   }
 
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
