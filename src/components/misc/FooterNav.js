@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
+import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class FooterNav extends Component {
 
@@ -20,38 +21,42 @@ class FooterNav extends Component {
 
     return(
       <nav className="nav-footer navbar navbar-dark bg-dark">
-        <button className="btn-nav-footer">
+        <Link className="btn-nav-footer" to="/board">
           <span className="icon-home-chip"></span>
-        </button>
+        </Link>
+        <ButtonToolbar>
+          <DropdownButton
+            drop="up"
+            bsPrefix="btn-nav-footer"
+            id="dropdown-button-apps"
+            key="up"
+            title={<span className="icon-apps"></span>}
+          >
+            <Dropdown.Item eventKey="1" className="btn-nav-footer-v"><span className="icon-conversation"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="2" className="btn-nav-footer-v"><span className="icon-tablon"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-calendario"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-grupos"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-sonometro"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-temporizador"></span></Dropdown.Item>
+          </DropdownButton>
+        </ButtonToolbar>
 
-        {/* <!-- Dropup Apps --> */}
-        <div className="btn-group dropup">
-          <button type="button" className="btn-nav-footer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="icon-apps"></span>
-          </button>
-          <div className="dropdown-menu">
-              <button className="btn-nav-footer-v">
-                <span className="icon-conversation"></span>
-              </button>
-              <button className="btn-nav-footer-v">
-                <span className="icon-tablon"></span>
-              </button>
-              <button className="btn-nav-footer-v">
-                <span className="icon-calendario"></span>
-              </button>
-              <button className="btn-nav-footer-v">
-                <span className="icon-grupos"></span>
-              </button>
-              <button className="btn-nav-footer-v">
-                <span className="icon-sonometro"></span>
-              </button>
-              <button className="btn-nav-footer-v">
-                  <span className="icon-temporizador"></span>
-              </button>
-          </div>
-        </div>
+        <ButtonToolbar>
+          <DropdownButton
+            drop="up"
+            bsPrefix="btn-nav-footer"
+            id="dropdown-button-settings"
+            key="up"
+            title={<span className="icon-ajustes"></span>}
+          >
+            <Dropdown.Item eventKey="1" className="btn-nav-footer-v"><span className="icon-set-classroom"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="2" className="btn-nav-footer-v"><span className="icon-set-profile"></span></Dropdown.Item>
+            <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-log-out" onClick={this.handleLogout}></span></Dropdown.Item>
+          </DropdownButton>
+        </ButtonToolbar>
+       
 
-        {/* <!-- Dropup Settings --> */}
+        {/* <!-- Dropup Settings -->
         <div className="btn-group dropup">
           <button type="button" className="btn-nav-footer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span className="icon-ajustes"></span>
@@ -67,7 +72,7 @@ class FooterNav extends Component {
               <span className="icon-log-out"></span>
             </button> 
           </div>
-        </div>
+        </div> */}
       </nav>
     )
   }
