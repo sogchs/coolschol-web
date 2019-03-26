@@ -162,11 +162,7 @@ class Register extends Component {
                   <div className="invalid-feedback">{errors.email}</div>
               </div>
               <div className="form-group">
-<<<<<<< HEAD
-                <label htmlFor="passwordRegister">Password</label>
-=======
                 <label htmlFor="passwordRegister">Password...</label>
->>>>>>> 2373de2e544637bb3801b3c3d8570e51a8434a32
                 <input type="password" 
                   className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
                   id="passwordRegister"
@@ -193,16 +189,10 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="surnameRegister">Surname</label>
-                <input type="text" 
-<<<<<<< HEAD
-                  className={`form-control ${touch.name && errors.name && 'is-invalid'}`} 
-                  id="surnameRegister" 
-                  name="surname"
-=======
+                <input type="text"
                   className={`form-control ${touch.surname && errors.surname && 'is-invalid'}`} 
                   id="surnameRegister" 
-                  surname="name"
->>>>>>> 2373de2e544637bb3801b3c3d8570e51a8434a32
+                  name="surname"
                   placeholder="Surname..."
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
