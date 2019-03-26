@@ -6,7 +6,10 @@ const createClassroom = (classroom) => http.post('/classroom', classroom)
 const listClassroom = () => http.get('/classroom')
   .then(response => response.data);
 
+const deleteClassroom = (id) => http.delete(`/classroom/${id}`)
+
 export default {
   createClassroom,
-  listClassroom
+  listClassroom,
+  deleteClassroom
 }

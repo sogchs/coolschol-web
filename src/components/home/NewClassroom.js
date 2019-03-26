@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import classroomService from '../../services/classroom-service'
-import { Redirect} from 'react-router-dom';
 import { withAuthConsumer } from '../../contexts/AuthStore';
-
+import { Modal, Button } from 'react-bootstrap';
 
 const validations = { title: (value) => value.length > 0 && value.length < 20}
-
 class NewClassroom extends Component {
+  
   state = {
     classroom: {
       title: ''
@@ -15,7 +14,7 @@ class NewClassroom extends Component {
       title: true
     },
     touch: {},
-    hide: "false"
+    show: false
   }
 
   handleChange = (event) => {
@@ -51,59 +50,47 @@ class NewClassroom extends Component {
       teachers: this.props.user.id
     }
     classroomService.createClassroom(classroomData)
-      .then(() => 
-      this.setState({ hide: "true" }))
+    .then(this.props.fetchClassrooms)
+    .then(this.setState({ show: false }))
   }
 
+  handleClose = () => {this.setState({ show: false });}
 
+  handleShow = () => {this.setState({ show: true });}
 
   render() {
-    const { hide, classroom, touch, errors } = this.state;
+    const { classroom, touch, errors, show } = this.state;
 
     
     return(
       <div>
-          <button type="button" className="btn btn-outline-info new-classroom-btn" data-toggle="modal" data-target="#newCardModal">
-            <div className="d-flex justify-content-center">
-              <h6 className="mb-0">+ New Classroom</h6>
-            </div>
-          </button>
-    
-          {/* <!-- Modal new classroom --> */}
-          <div className="modal fade" id="newCardModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden={hide}>
-            <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalCenterTitle">New Classroom</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+          <Button variant="outline-info new-classroom-btn" onClick={this.handleShow}>+ New Classroom</Button>
+
+          <Modal show={show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Create a new Classroom</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <form onSubmit={this.createClassroom}>
+                <div className="form-group">
+                  <label htmlFor="nameClass">Classroom name</label>
+                  <input type="text" 
+                    className={`form-control form-control-sm ${touch.title ? (errors.title ? 'is-invalid' : 'is-valid') : ''}`} 
+                    id="nameClass" 
+                    placeholder="Ex. 5º Mathematics"
+                    value={classroom.title} 
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur}
+                    name="title"
+                    autoComplete="off"
+                    />
                 </div>
-                <div className="modal-body">
-                  <form onSubmit={this.createClassroom}>
-                    <div className="form-group">
-                      <label htmlFor="nameClass">Classroom name</label>
-                      <input type="text" 
-                        className={`form-control form-control-sm ${touch.title ? (errors.title ? 'is-invalid' : 'is-valid') : ''}`} 
-                        id="nameClass" 
-                        placeholder="Ej. 5º Matemáticas"
-                        value={classroom.title} 
-                        onChange={this.handleChange}
-                        onBlur={this.handleBlur}
-                        name="title"
-                        autoComplete="off"
-                        />
-                    </div>
-                    <div className="modal-footer">
-                      <button type="submit" className="btn btn-info">
-                      Create</button>
-                    </div>
-                  </form>
-                </div>
-                
-              </div>
-            </div>
-          </div> 
+              </form>
+            </Modal.Body>
+              <Modal.Footer>
+                <Button variant="info" onClick={this.createClassroom}>Create</Button>
+              </Modal.Footer>
+          </Modal>
       </div>
     )
   }

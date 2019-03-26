@@ -1,47 +1,71 @@
 import React, { Component } from 'react';
-
-
+import { Modal, Button, Form } from 'react-bootstrap';
+import classroomService from '../../services/classroom-service'
 class DeleteClassroom extends Component {
-  
+  state = {
+    show: false,
+    classroom: {
+      classroomId: ''
+    }
+  }
 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({ 
+      classroom: {
+        ...this.state.classroom,
+        [name]: value
+      }
+    })
+  }
+
+  deleteClassroom = (event) => {
+    event.preventDefault();
+    
+    classroomService.deleteClassroom(this.state.classroom.classroomId)
+    .then(this.props.fetchClassrooms)
+    .then( this.setState({ show: false}))
+  }
+
+  handleShow = () => {
+    this.setState({ show: true });
+  }
+  handleClose = () => {
+    this.setState({ show: false });
+  }
 
   render() {
-    
     return(
       <div className="mx-auto">
-          <button type="button" className="btn text-secondary" data-toggle="modal" data-target="#deleteClassModal">
-            Delete Classroom
-          </button>
-              
-          {/* <!-- Modal delete className --> */}
-          <div className="modal fade" id="deleteClassModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">Delete Classroom</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                  <div className="modal-body">
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlSelect1">Select the classroom for delete</label>
-                      <select className="form-control" id="exampleFormControlSelect1">
-                          <option>Classroom</option>
-                      </select>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
-                      <label className="form-check-label" htmlFor="inlineCheckbox1">Check to confirm</label>
-                    </div>
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-danger">Delete</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
+        <Button variant="link" className="text-black-50 mt-3" onClick={this.handleShow} >
+          Delete Classroom
+        </Button>
+
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Classroom</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Select the classroom for delete</Form.Label>
+                <Form.Control as="select" className="w-75" name="classroomId" onChange={this.handleChange}>
+                <option readOnly>Select..</option>
+                {this.props.listClassrooms.map(classroom => (
+                <option value={classroom.id} key={classroom.id}>{classroom.title}</option>
+                ))}
+                </Form.Control>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.deleteClassroom}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     )
   }
 }

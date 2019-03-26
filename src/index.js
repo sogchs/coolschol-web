@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '@fortawesome/fontawesome-free/css/all.css'
 import './index.css';
+import 'react-bootstrap/dist/react-bootstrap.min.js'
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';

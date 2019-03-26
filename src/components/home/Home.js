@@ -10,9 +10,13 @@ class Home extends Component {
     classrooms: []
   }
 
-  componentDidMount(){
+  fetchClassrooms = () => {
     classroomService.listClassroom()
     .then(classrooms => this.setState({ classrooms }))
+  }
+
+  componentDidMount(){
+    this.fetchClassrooms();
   }
 
 
@@ -21,19 +25,17 @@ class Home extends Component {
     return(
       <div>
         <div className="classroom">
-        {this.state.classrooms.map(classroom => (
-          <button type="button" className="btn btn-info classroom-btn" {...classroom} key={classroom.id}>
-          <h5 className="mb-0">{classroom.title}</h5>
-          <div>
-            <small className="text-white-50">STUDENTS</small>
-            <h6 className="mb-0">20</h6>
-          </div>
-        </button>
-      ))}
-          
-
-          <NewClassroom />
-          <DeleteClassroom />
+          {this.state.classrooms.map(classroom => (
+            <button type="button" className="btn btn-info classroom-btn" key={classroom.id}>
+              <h5 className="mb-0">{classroom.title}</h5>
+              <div>
+                <small className="text-white-50">STUDENTS</small>
+                <h6 className="mb-0">{classroom.students || "0"}</h6>
+              </div>
+            </button>
+          ))}
+          <NewClassroom fetchClassrooms={this.fetchClassrooms}/>
+          <DeleteClassroom listClassrooms={this.state.classrooms} fetchClassrooms={this.fetchClassrooms}/>
         </div>
       </div>
     )
