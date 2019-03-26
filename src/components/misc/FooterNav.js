@@ -21,7 +21,7 @@ class FooterNav extends Component {
 
     return(
       <nav className="nav-footer navbar navbar-dark bg-dark">
-        <Link className="btn-nav-footer" to="/board">
+        <Link className="btn-nav-footer" to="/classroom">
           <span className="icon-home-chip"></span>
         </Link>
         <ButtonToolbar>
@@ -54,25 +54,7 @@ class FooterNav extends Component {
             <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-log-out" onClick={this.handleLogout}></span></Dropdown.Item>
           </DropdownButton>
         </ButtonToolbar>
-       
 
-        {/* <!-- Dropup Settings -->
-        <div className="btn-group dropup">
-          <button type="button" className="btn-nav-footer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="icon-ajustes"></span>
-          </button>
-          <div className="dropdown-menu setting-btn">
-            <button className="btn-nav-footer-v">
-              <span className="icon-set-classroom"></span>
-            </button>
-            <button className="btn-nav-footer-v">
-              <span className="icon-set-profile"></span>
-            </button>
-            <button className="btn-nav-footer-v" onClick={this.handleLogout}>
-              <span className="icon-log-out"></span>
-            </button> 
-          </div>
-        </div> */}
       </nav>
     )
   }

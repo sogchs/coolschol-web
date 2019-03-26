@@ -33,6 +33,13 @@ const validations = {
     }
     return message;
   },
+  surname: (value) => {
+    let message;
+    if(!value){
+      message = 'Surname is required'
+    }
+    return message;
+  },
   role: (value) => {
     let message;
     if(!value){
@@ -47,6 +54,7 @@ class Register extends Component {
       email: '',
       password: '',
       name: '',
+      surname: '',
       role: {
         teacher: 'teacher',
         student: 'student'
@@ -56,6 +64,7 @@ class Register extends Component {
       email: validations.email(),
       password: validations.password(),
       name: validations.name(),
+      surname: validations.surname(),
       role: validations.role()
     },
     touch: {},
@@ -131,7 +140,7 @@ class Register extends Component {
                   className={`form-control ${touch.email && errors.email && 'is-invalid'}`} 
                   id="emailRegister"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email..."
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.email}
@@ -139,12 +148,12 @@ class Register extends Component {
                   <div className="invalid-feedback">{errors.email}</div>
               </div>
               <div className="form-group">
-                <label htmlFor="passwordRegister">Contraseña</label>
+                <label htmlFor="passwordRegister">Password...</label>
                 <input type="password" 
                   className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
                   id="passwordRegister"
                   name="password"
-                  placeholder="Contraseña"
+                  placeholder="Password..."
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.password}
@@ -152,17 +161,30 @@ class Register extends Component {
                   <div className="invalid-feedback">{errors.password}</div>
               </div>
               <div className="form-group">
-                <label htmlFor="nameRegister">Nombre y Apellidos</label>
+                <label htmlFor="nameRegister">Name</label>
                 <input type="text" 
                   className={`form-control ${touch.name && errors.name && 'is-invalid'}`} 
                   id="nameRegister" 
                   name="name"
-                  placeholder="Nombre completo"
+                  placeholder="Name..."
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.name}
                   />
                   <div className="invalid-feedback">{errors.name}</div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="surnameRegister">Surname</label>
+                <input type="text" 
+                  className={`form-control ${touch.surname && errors.surname && 'is-invalid'}`} 
+                  id="surnameRegister" 
+                  surname="name"
+                  placeholder="Surname..."
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={user.surname}
+                  />
+                  <div className="invalid-feedback">{errors.surname}</div>
               </div>
               <div className="form-check form-check-inline">
                 <input className={`form-check-input ${touch.role && errors.role && 'is-invalid'}`} 
@@ -173,7 +195,7 @@ class Register extends Component {
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
                 />
-                <label className="form-check-label" htmlFor="roleRegister">Profesor</label>
+                <label className="form-check-label" htmlFor="roleRegister">Teacher</label>
               </div>
               <div className="form-check form-check-inline">
                 <input className={`form-check-input ${touch.role && errors.role && 'custom-control-input'}`} 
@@ -184,11 +206,11 @@ class Register extends Component {
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   />
-                <label className="form-check-label" htmlFor="roleRegister2">Alumno</label>
+                <label className="form-check-label" htmlFor="roleRegister2">Student</label>
                 <div className="invalid-feedback">{errors.role}</div>
               </div>
               
-                <button type="submit" className="btn btn-info w-100 mt-3">Entrar</button>
+                <button type="submit" className="btn btn-info w-100 mt-3">Register</button>
             </form>
             <p className="mx-auto mt-4">Si ya tienes cuenta <Link to='/login'> ENTRA </Link>en tu espacio</p>        
         </div>
