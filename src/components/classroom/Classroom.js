@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
 import Student from './Student';
+import Score from './Score';
 
 
 class Classroom extends Component {
@@ -24,8 +25,12 @@ class Classroom extends Component {
     
     return(
       <div>
-      
-       Hola estas en classroom
+        <div className="btn-classroom-action">
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Random</button>
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Select all</button>
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#list">Check List</button>
+          <Score/>
+        </div>
 
        <Student />
       </div>

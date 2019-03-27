@@ -3,6 +3,8 @@ import { Link, Redirect} from 'react-router-dom';
 import logoCoolSchool from '../../logo-coolSchool.svg';
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
+// import imagesAvatar from '../../data/imagesAvatar'
+
 
 // eslint-disable-next-line no-useless-escape
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -55,10 +57,7 @@ class Register extends Component {
       password: '',
       name: '',
       surname: '',
-      role: {
-        teacher: 'teacher',
-        student: 'student'
-      },
+      role: '',
       imageURL: ''
     },
     errors: {
@@ -79,6 +78,13 @@ class Register extends Component {
       this.setState({
         user: {
           imageURL: "https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553620038/coolSchool/avatar/28.png"
+          // const randomImg = imagesAvatar.Math.floor(Math.random() * ((41+1) - 1) + 1);
+        }
+      })
+    } else {
+      this.setState({
+        user: {
+          imageURL: "https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553701128/coolSchool/web/default-user.jpg"
         }
       })
     }
@@ -110,7 +116,6 @@ class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // this.isStudent();
     if(this.isValid()){
       authService.register(this.state.user)
         .then( (user) =>  this.setState({ isRegistered: true }),
@@ -135,6 +140,7 @@ class Register extends Component {
     return !Object.keys(this.state.user)
     .some(attr => this.state.errors[attr])
   }
+
 
   render(){
     const { user, isRegistered, errors, touch } = this.state;
@@ -205,9 +211,9 @@ class Register extends Component {
                 type="radio" 
                 name="role" 
                 id="roleRegister" 
-                value={user.role.teacher}
+                value="teacher"
+                checked={user.role === "teacher"}
                 onChange={this.handleChange}
-                onBlur={this.handleBlur}
                 />
                 <label className="form-check-label" htmlFor="roleRegister">Teacher</label>
               </div>
@@ -216,9 +222,9 @@ class Register extends Component {
                   type="radio" 
                   name="role" 
                   id="roleRegister2" 
-                  value={user.role.student}
+                  value="student"
+                  checked={user.role === "student"}
                   onChange={this.handleChange}
-                  onBlur={this.handleBlur}
                   />
                 <label className="form-check-label" htmlFor="roleRegister2">Student</label>
                 <div className="invalid-feedback">{errors.role}</div>

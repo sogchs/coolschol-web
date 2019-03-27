@@ -444,6 +444,11 @@
       margin: 8px 0;
     }
   /* ********* BOARD CLASS ************ */
+  .btn-classroom-action{
+    display: flex;
+    justify-content: space-around !important;
+    margin-top: 20px;
+  }
   .student {
     zoom: 68%;
     margin: 2px 2px;

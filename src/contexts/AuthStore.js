@@ -6,11 +6,15 @@ const AuthContext = React.createContext();
 class AuthStore extends Component {
 
   state = {
-    user: JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || '{}')
+    user: JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || '{}'),
+    classroom: '{}'
   }
 
   handleUserChange = (user) => {
-    this.setState({ user: user});
+    this.setState({
+      ...this.state,
+      user: user
+    });
 
     if(user && user.email){
       localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user))
@@ -19,16 +23,25 @@ class AuthStore extends Component {
     }
   }
 
+  handleClassroomChange = (classroom) => {
+    console.log({ classroom })
+    this.setState({ 
+      ...this.state,
+      classroom: classroom });
+  }
+
   isAuthenticated = () => this.state.user && this.state.user.email;
-  isAdmin = () => this.state.user && this.state.user.role === 'teacher';
+  isAdmin = () => this.state.user && this.state.user.role === 'teacher'; //cambiar por teacher
 
   render(){
     return(
       <AuthContext.Provider value= {{
         user: this.state.user,
+        classroom: this.state.classroom,
         onUserChanged: this.handleUserChange,
         isAuthenticated: this.isAuthenticated,
-        isAdmin: this.isAdmin
+        isAdmin: this.isAdmin,
+        onClassroomChanged: this.handleClassroomChange
       }}>
         {this.props.children}
       </AuthContext.Provider>
