@@ -3,7 +3,8 @@ import { Link, Redirect} from 'react-router-dom';
 import logoCoolSchool from '../../logo-coolSchool.svg';
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
-// import imagesAvatar from '../../data/imagesAvatar'
+import imagesAvatar from '../../data/imagesAvatar';
+import randomObjProp from 'random-obj-prop';
 
 
 // eslint-disable-next-line no-useless-escape
@@ -73,21 +74,12 @@ class Register extends Component {
 
   
 
-  isStudent = () => {
+  assignImageToUser = () => {
     if(this.state.user.role === 'student'){
-      this.setState({
-        user: {
-          imageURL: "https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553620038/coolSchool/avatar/28.png"
-          // const randomImg = imagesAvatar.Math.floor(Math.random() * ((41+1) - 1) + 1);
-        }
-      })
-    } else {
-      this.setState({
-        user: {
-          imageURL: "https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553701128/coolSchool/web/default-user.jpg"
-        }
-      })
-    }
+      
+      return randomObjProp(imagesAvatar);
+    } 
+    return "https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553701128/coolSchool/web/default-user.jpg";   
   }
 
   handleChange = (event) => {
@@ -115,10 +107,12 @@ class Register extends Component {
   }
 
   handleSubmit = (event) => {
+    const { user } = this.state;
+    const imageURL = this.assignImageToUser();
     event.preventDefault();
     if(this.isValid()){
-      authService.register(this.state.user)
-        .then( (user) =>  this.setState({ isRegistered: true }),
+      authService.register({...user, imageURL})
+        .then( (user) =>  this.setState({ isRegistered: true, user }, () => console.log(this.state)),
                 (error) => {
                   const { errors, message } = error.response.data;
                   this.setState({
