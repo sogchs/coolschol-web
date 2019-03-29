@@ -56,20 +56,31 @@ class AddStudent extends Component {
   getStudent = (event) => {
     event.preventDefault();
 
-    const userDate = { ...this.state.user.email}
-    classroomService.searchUserEmail()
-    console.log("hola", this.state.user.email)
+    const userDate = { ...this.state.user}
+    classroomService.searchUserByEmail(userDate)
+    .then(student => this.setState({ 
+        students: [
+          ...this.state.students,
+        student
+        ],
+      user: {
+        email: ''
+      }
+       
+    }))
   }
 
   addListStudents = (event) => {
     event.preventDefault();
     
-    const classroomData = {
-      ...this.state.classroom
+    const classroomStudents = {
+      ...this.state.students
     }
-    classroomService.editClassroom(classroomData)
+    classroomService.editClassroom(this.props.classroom.id, classroomStudents)
     //.then(this.props.fetchClassrooms)
     .then(this.setState({ show: false }))
+    console.log("id clase en la que estoy=>", this.props.classroom.id)
+    console.log("datos que guardo=>", classroomStudents)
   }
 
 
@@ -110,12 +121,15 @@ class AddStudent extends Component {
                 <Button variant="outline-secondary" onClick={this.getStudent}>+ Add</Button>
               </InputGroup.Append>
             </InputGroup>
-            <ul>
-              <li> Nombre y mail del alumno</li>
-            </ul>
+            <ol reversed>
+              {students.map(student => (
+                <li key={student.id}>{student.name} {student.surname} - {student.email}</li>
+              ))}
+              
+            </ol>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onSubmit={this.addListStudents} >
+            <Button variant="info" onClick={this.addListStudents}>
               Save students
             </Button>
           </Modal.Footer>

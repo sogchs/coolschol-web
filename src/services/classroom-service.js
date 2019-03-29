@@ -10,10 +10,10 @@ const deleteClassroom = (id) => http.delete(`/classroom/${id}`);
 
 const detailClassroom = (id) => http.get(`/classroom/${id}`);
 
-const editClassroom = (id) => http.put(`/classroom/${id}`);
+const editClassroom = (id, classroomStudents) => http.put(`/classroom/${id}`, classroomStudents);
 
-const searchUserEmail = () => http.get('/user')
-.then(response => response.data);
+const searchUserByEmail = (userData) => http.post('/user', userData)
+  .then(response => response.data);
 
 export default {
   createClassroom,
@@ -21,5 +21,5 @@ export default {
   deleteClassroom,
   detailClassroom,
   editClassroom,
-  searchUserEmail
+  searchUserByEmail
 }
