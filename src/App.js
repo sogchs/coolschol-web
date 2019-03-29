@@ -7,6 +7,7 @@ import { NavBar, FooterNav} from './components/misc';
 import { Login, Register } from './components/auth';
 import Home from './components/home/Home';
 import Classroom from './components/classroom/Classroom';
+import Board from './components/board/Board';
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/classroom" component={Classroom} />
+          <Route exact path="/board" component={Board} />
           {/* <PrivateRoute exact path="/home" role={"teacher"} component={Home} /> */}
           {/* <PrivateRoute exact path="/" role={"Student"} component={} />
           <Redirect to="/not-found"/> */}

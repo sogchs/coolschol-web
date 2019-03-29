@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
-import boardService from '../../services/classroom-service';
+import boardService from '../../services/board-service';
 import { Button } from 'react-bootstrap';
+import Column from './Column';
+import CreateColumn from './CreateColumn';
 
 
 class Board extends Component {
@@ -15,7 +17,7 @@ class Board extends Component {
   }
 
   componentDidMount(){
-    this.fetchClassrooms();
+    this.fetchColumns();
   }
 
 
@@ -23,20 +25,12 @@ class Board extends Component {
   render() {
     
     return(
-      <div>
-        <div className="classroom">
-          {this.state.classrooms.map(classroom => (
-            <Button type="button" className="btn btn-info classroom-btn" key={classroom.id} href="/classroom">
-              <h5 className="mb-0">{classroom.title}</h5>
-              <div>
-                <small className="text-white-50">STUDENTS</small>
-                <h6 className="mb-0">{classroom.students || "0"}</h6>
-              </div>
-            </Button>
-          ))}
-          <NewClassroom fetchClassrooms={this.fetchClassrooms}/>
-          <DeleteClassroom listClassrooms={this.state.classrooms} fetchClassrooms={this.fetchClassrooms}/>
-        </div>
+      <div className="container-columns">
+       {this.state.columns.map(column => (
+        <Column {...column} key={column.id} fetchColumns={this.fetchColumns}/>
+      ))}
+
+      <CreateColumn fetchColumns={this.fetchColumns} />
       </div>
     )
   }
