@@ -33,7 +33,7 @@ class Classroom extends Component {
           <Score />
         </div>
 
-       <Student />
+       {/* <Student /> */}
        <AddStudent />
       </div>
     )

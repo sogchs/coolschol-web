@@ -10,9 +10,10 @@ const deleteClassroom = (id) => http.delete(`/classroom/${id}`);
 
 const detailClassroom = (id) => http.get(`/classroom/${id}`);
 
-const editClassroom = (id, classroomStudents) => http.put(`/classroom/${id}`, classroomStudents);
+const editClassroom = (id, classroomStudents) => http.put(`/classroom/${id}`, classroomStudents)
+  .then(response => response.data);
 
-const searchUserByEmail = (userData) => http.post('/user', userData)
+const searchUserByEmail = (userEmail) => http.post('/user', userEmail)
   .then(response => response.data);
 
 export default {

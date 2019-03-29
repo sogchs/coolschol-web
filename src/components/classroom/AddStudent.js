@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
-import { Button, Modal, FormControl, InputGroup } from 'react-bootstrap';
+import { Button, Modal, FormControl, InputGroup, Form } from 'react-bootstrap';
 
 // eslint-disable-next-line no-useless-escape
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -20,6 +20,7 @@ const validations = {
 class AddStudent extends Component {
   state = {
     students: [],
+    objectIdStudents: [],
     user: {
       email:''
     },
@@ -56,13 +57,17 @@ class AddStudent extends Component {
   getStudent = (event) => {
     event.preventDefault();
 
-    const userDate = { ...this.state.user}
-    classroomService.searchUserByEmail(userDate)
+    const userEmail = { ...this.state.user}
+    classroomService.searchUserByEmail(userEmail)
     .then(student => this.setState({ 
-        students: [
-          ...this.state.students,
-        student
-        ],
+      students: [
+        ...this.state.students,
+      student
+      ],
+      objectIdStudents: [
+        ...this.state.objectIdStudents,
+        student.id
+      ],
       user: {
         email: ''
       }
@@ -74,13 +79,13 @@ class AddStudent extends Component {
     event.preventDefault();
     
     const classroomStudents = {
-      ...this.state.students
+      ...this.state.objectIdStudents
     }
     classroomService.editClassroom(this.props.classroom.id, classroomStudents)
     //.then(this.props.fetchClassrooms)
     .then(this.setState({ show: false }))
     console.log("id clase en la que estoy=>", this.props.classroom.id)
-    console.log("datos que guardo=>", classroomStudents)
+    console.log("datos que quiero guardar=>", classroomStudents)
   }
 
 
@@ -108,7 +113,7 @@ class AddStudent extends Component {
           </Modal.Header>
           <Modal.Body>
             <InputGroup className="mb-3">
-              <FormControl
+              <Form.Control
                 placeholder="Student email..."
                 name="email" 
                 value={user.email}
@@ -116,7 +121,9 @@ class AddStudent extends Component {
                 onChange={this.handleChange}
               />
               
-              {/* <div className="invalid-feedback">{errors.email}</div> */}
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
               <InputGroup.Append>
                 <Button variant="outline-secondary" onClick={this.getStudent}>+ Add</Button>
               </InputGroup.Append>
