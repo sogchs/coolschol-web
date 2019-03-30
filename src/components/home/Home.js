@@ -41,7 +41,7 @@ class Home extends Component {
               <h5 className="mb-0">{classroom.title}</h5>
               <div>
                 <small className="text-white-50">STUDENTS</small>
-                <h6 className="mb-0">{classroom.students || "0"}</h6>
+                <h6 className="mb-0">{classroom.students.length || "0"}</h6>
               </div>
             </Link>
           ))}

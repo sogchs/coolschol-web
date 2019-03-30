@@ -455,8 +455,16 @@
     padding-top: 0px;
   }
   .board-students {
-    margin: 1.5em;
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
   }
+
+  .btn-add-student{
+    height: fit-content;
+  }
+  
   .student-checked{
     border: 2px solid lightseagreen;
     border-radius: 5px;

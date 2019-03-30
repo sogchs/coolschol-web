@@ -96,7 +96,7 @@ class AddStudent extends Component {
     
     return(
       <>
-        <Button variant="outline-info ml-3" onClick={this.handleShow}>
+        <Button variant="outline-info ml-3 btn-add-student" onClick={this.handleShow}>
           +
         </Button>
 

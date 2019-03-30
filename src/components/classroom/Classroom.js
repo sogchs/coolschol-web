@@ -13,16 +13,15 @@ class Classroom extends Component {
 
   }
 
-  fetchStudents = () => {
-    classroomService.detailClassroom(this.props.classroom.id)
-      
-      .then(classroom => this.setState({ classroom }))
-      console.log("state=>", this.state.classroom)
-  }
+  // fetchStudents = () => {
+  //   classroomService.detailClassroom(this.props.classroom.id)
+    
+  //     .then(classroom => this.setState({ classroom }))
+  // }
 
-  componentDidMount(){
-    this.fetchStudents();
-  }
+  // componentDidMount(){
+  //   this.fetchStudents();
+  // }
 
 
   render() {
@@ -35,12 +34,18 @@ class Classroom extends Component {
           <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#list">Check List</button>
           <Score />
         </div>
+        <div className="board-students">
+          {this.props.classroom.students.map(student => (
+            <Student 
+              key={student.id} 
+              studentName={student.name} 
+              studentSurname={student.surname}
+              studentIMG={student.imageURL}
+              />
+          ))}
+          <AddStudent />
+        </div>
         
-        {/* {this.props.classroom.students.map(student => (
-          <Student key={student.id}/>
-        ))} */}
-       {/* <Student /> */}
-       <AddStudent />
       </div>
     )
   }
