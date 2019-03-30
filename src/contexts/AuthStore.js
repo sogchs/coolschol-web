@@ -25,6 +25,7 @@ class AuthStore extends Component {
   }
 
   handleClassroomChange = (classroom) => {
+    console.log({classroom});
     this.setState({ 
       ...this.state,
       classroom: classroom });

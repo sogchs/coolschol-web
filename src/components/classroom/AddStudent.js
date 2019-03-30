@@ -71,14 +71,20 @@ class AddStudent extends Component {
 
   addListStudents = (event) => {
     event.preventDefault();
+    const { classroom: contextClassroom, onClassroomChanged } = this.props;
 
     const classroom = {
       students: this.state.students.map(student => student.id)
     }
+    const newStudents = [...contextClassroom.students, ...this.state.students]
     classroomService.editClassroom(this.props.classroom.id, classroom)
-      .then(this.setState({ show: false, students: [] }))
-    // console.log("id clase en la que estoy=>", this.props.classroom.id)
-    // console.log("datos que quiero guardar=>", classroom)
+      .then(() => {
+        this.setState({ show: false, students: [] });
+        onClassroomChanged({
+          ...contextClassroom,
+          students: newStudents
+        });
+      }) 
   }
 
 
@@ -90,10 +96,10 @@ class AddStudent extends Component {
     this.setState({ show: true });
   }
 
+  
 
   render() {
     const { errors, students, user, touch } = this.state
-    
     return(
       <>
         <Button variant="outline-info ml-3 btn-add-student" onClick={this.handleShow}>

@@ -13,19 +13,8 @@ class Classroom extends Component {
 
   }
 
-  // fetchStudents = () => {
-  //   classroomService.detailClassroom(this.props.classroom.id)
-    
-  //     .then(classroom => this.setState({ classroom }))
-  // }
-
-  // componentDidMount(){
-  //   this.fetchStudents();
-  // }
-
 
   render() {
-    
     return(
       <div>
         <div className="btn-classroom-action">
