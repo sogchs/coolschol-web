@@ -20,7 +20,6 @@ const validations = {
 class AddStudent extends Component {
   state = {
     students: [],
-    objectIdStudents: [],
     user: {
       email:''
     },
@@ -45,7 +44,7 @@ class AddStudent extends Component {
     })
   }
 
-  handleBLur = (event) => {
+  handleBlur = (event) => {
     const { name } = event.target;
   
     this.setState({
@@ -64,28 +63,22 @@ class AddStudent extends Component {
         ...this.state.students,
       student
       ],
-      objectIdStudents: [
-        ...this.state.objectIdStudents,
-        student.id
-      ],
       user: {
         email: ''
       }
-       
     }))
   }
 
   addListStudents = (event) => {
     event.preventDefault();
-    
-    const classroomStudents = {
-      ...this.state.objectIdStudents
+
+    const classroom = {
+      students: this.state.students.map(student => student.id)
     }
-    classroomService.editClassroom(this.props.classroom.id, classroomStudents)
-    //.then(this.props.fetchClassrooms)
-    .then(this.setState({ show: false }))
-    console.log("id clase en la que estoy=>", this.props.classroom.id)
-    console.log("datos que quiero guardar=>", classroomStudents)
+    classroomService.editClassroom(this.props.classroom.id, classroom)
+      .then(this.setState({ show: false, students: [] }))
+    // console.log("id clase en la que estoy=>", this.props.classroom.id)
+    // console.log("datos que quiero guardar=>", classroom)
   }
 
 
@@ -99,7 +92,7 @@ class AddStudent extends Component {
 
 
   render() {
-    const { errors, students, user } = this.state
+    const { errors, students, user, touch } = this.state
     
     return(
       <>
@@ -113,12 +106,13 @@ class AddStudent extends Component {
           </Modal.Header>
           <Modal.Body>
             <InputGroup className="mb-3">
-              <Form.Control
+              <Form.Control id="email"
+                className={`form-control ${touch.email && errors.email && 'is-invalid'}`}
                 placeholder="Student email..."
-                name="email" 
+                name="email"
                 value={user.email}
-                onBlur={this.handleBlur}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
               />
               
               <Form.Control.Feedback type="invalid">

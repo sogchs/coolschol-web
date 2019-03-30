@@ -9,16 +9,19 @@ import AddStudent from './AddStudent';
 class Classroom extends Component {
   state = {
     students: [],
-    classroom: this.props.classroom
+    classroom: ''
+
   }
 
   fetchStudents = () => {
     classroomService.detailClassroom(this.props.classroom.id)
-      .then(students => this.setState({ students }))
+      
+      .then(classroom => this.setState({ classroom }))
+      console.log("state=>", this.state.classroom)
   }
 
   componentDidMount(){
-    
+    this.fetchStudents();
   }
 
 
@@ -32,7 +35,10 @@ class Classroom extends Component {
           <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#list">Check List</button>
           <Score />
         </div>
-
+        
+        {/* {this.props.classroom.students.map(student => (
+          <Student key={student.id}/>
+        ))} */}
        {/* <Student /> */}
        <AddStudent />
       </div>
