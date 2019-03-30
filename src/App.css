@@ -452,7 +452,7 @@
   .student {
     zoom: 68%;
     margin: 2px 2px;
-    padding-top: 0px;
+    padding-top: 5px;
   }
   .board-students {
     margin: 1em;
@@ -465,8 +465,8 @@
     height: fit-content;
   }
   
-  .student-checked{
-    border: 2px solid lightseagreen;
+  .student-selected{
+    background: lightblue;
     border-radius: 5px;
   }
   

@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
-import Student from './Student';
 import Score from './Score';
 import AddStudent from './AddStudent';
 
 
+
 class Classroom extends Component {
   state = {
-    students: [],
+    studentsSelect: [],
     classroom: ''
 
+  }
+
+  handleSelectStudent = (student) => {
+    const containStudent = this.state.studentsSelect.includes(student)
+    if(containStudent){
+      const removeStudent = () => {
+        return this.state.studentsSelect.filter( e => e !== student );};
+        
+      this.setState({ studentsSelect: removeStudent() })
+
+    } else {
+      this.setState({
+        studentsSelect: [
+          ...this.state.studentsSelect,
+          student
+        ]    
+      })
+    }
   }
 
 
@@ -25,12 +43,20 @@ class Classroom extends Component {
         </div>
         <div className="board-students">
           {this.props.classroom.students.map(student => (
-            <Student 
-              key={student.id} 
-              studentName={student.name} 
-              studentSurname={student.surname}
-              studentIMG={student.imageURL}
-              />
+              <div className={`student ${this.state.studentsSelect.includes(student) && 'student-selected'}`}
+                name="student"
+                key={student.id} 
+                onClick={() => this.handleSelectStudent(student)}
+                >
+                <img className="avatar-card" src={student.imageURL} alt=""/>
+                <span className="avatar-points">10</span>
+                <div className="card">
+                  <div className="card-p">
+                    <p className="card-name">{student.name}</p>
+                    <p className="card-surname">{student.surname}</p>
+                  </div>
+                </div>
+              </div>
           ))}
           <AddStudent />
         </div>
