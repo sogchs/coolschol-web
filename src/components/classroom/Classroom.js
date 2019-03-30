@@ -3,6 +3,7 @@ import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
 import Score from './Score';
 import AddStudent from './AddStudent';
+import CheckList from './CheckList';
 
 
 
@@ -31,14 +32,40 @@ class Classroom extends Component {
     }
   }
 
+  handleSelectAll = () => {
+    this.setState({ studentsSelect:[]})
+    this.setState({
+        studentsSelect: 
+          this.props.classroom.students
+      })
+  }
+
+  handleDeselectAll = () => {
+    this.setState({ studentsSelect:[]})
+  }
+
+  handleRandomSelect = () => {
+    this.setState({ studentsSelect:[]})
+    const randomStudent = this.props.classroom.students.length;
+    const selected = Math.floor(Math.random()*randomStudent);
+    console.log(this.props.classroom.students[selected]);
+    this.setState({
+        studentsSelect: [
+          this.props.classroom.students[selected]
+        ]
+          
+      })
+  }
+
 
   render() {
     return(
       <div>
         <div className="btn-classroom-action">
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Random</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Select all</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#list">Check List</button>
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleRandomSelect}>Random</button>
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleSelectAll}>Select all</button>
+          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleDeselectAll}>Deselect all</button>
+          <CheckList />
           <Score />
         </div>
         <div className="board-students">
