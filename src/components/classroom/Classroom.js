@@ -1,40 +1,121 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
-import Student from './Student';
 import Score from './Score';
 import AddStudent from './AddStudent';
+import CheckList from './CheckList';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 
 class Classroom extends Component {
   state = {
-    students: [],
-    classroom: this.props.classroom
+    studentsSelect: [],
+    nonAttendance:[]
   }
 
-  fetchStudents = () => {
-    classroomService.detailClassroom(this.props.classroom.id)
-      .then(students => this.setState({ students }))
+  handleSelectStudent = (student) => {
+    const containStudent = this.state.studentsSelect.includes(student)
+    if(containStudent){
+      const removeStudent = () => {
+        return this.state.studentsSelect.filter( e => e !== student );};
+        
+      this.setState({ studentsSelect: removeStudent() })
+
+    } else {
+      this.setState({
+        studentsSelect: [
+          ...this.state.studentsSelect,
+          student
+        ]    
+      })
+    }
   }
+
+
+  handleSelectAll = () => {
+    this.setState({ studentsSelect:[]})
+    this.setState({
+        studentsSelect: 
+          this.props.classroom.students
+      })
+  }
+
+  handleDeselectAll = () => {
+    this.setState({ studentsSelect:[]})
+  }
+
+  handleRandomSelect = () => {
+    this.setState({ studentsSelect:[]})
+    const randomStudent = this.props.classroom.students.length;
+    const selected = Math.floor(Math.random()*randomStudent);
+    console.log(this.props.classroom.students[selected]);
+    this.setState({
+        studentsSelect: [
+          this.props.classroom.students[selected]
+        ]
+          
+      })
+  }
+
+  updateStudentByChecklist = () => {
+    classroomService.getChecklist(this.props.classroom.id)
+    .then(checklist => this.setState({
+      nonAttendance: checklist.nonAttendance.map(checklist => checklist)
+    })
+  )}
 
   componentDidMount(){
-    
+    this.updateStudentByChecklist()
   }
+
+
 
 
   render() {
-    
+
     return(
       <div>
         <div className="btn-classroom-action">
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Random</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill">Select all</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#list">Check List</button>
-          <Score />
+          <ButtonGroup size="sm" className="mx-auto" >
+            <Button variant="outline-secondary" onClick={this.handleRandomSelect}>Random</Button>
+            <Button variant="outline-secondary" onClick={this.handleSelectAll}>Select All</Button>
+            <Button variant="outline-secondary" onClick={this.handleDeselectAll}>Deselect All</Button>
+            <CheckList
+            studentSelected={this.state.studentsSelect} 
+            totalStudent={this.props.classroom.students.length}
+            deselectAll={this.handleDeselectAll}
+            updateStudents={this.updateStudentByChecklist}
+            />
+            <Score 
+            studentSelected={this.state.studentsSelect}
+            deselectAll={this.handleDeselectAll}
+            />
+          </ButtonGroup>
         </div>
-
-       {/* <Student /> */}
-       <AddStudent />
+        
+        <div className="board-students">
+          {this.props.classroom.students.map(student => (
+              <div className={`student 
+                    ${this.state.studentsSelect.includes(student) && 'student-selected'}
+                    ${this.state.nonAttendance.includes(student.id) && 'student-out'}
+                    `}
+                name="student"
+                key={student.id} 
+                onClick={() => this.handleSelectStudent(student)}
+                >
+                <img className="avatar-card" src={student.imageURL} alt=""/>
+                <span className="avatar-points">10</span>
+                <div className="card">
+                  <div className="card-p">
+                    <p className="card-name">{student.name}</p>
+                    <p className="card-surname">{student.surname}</p>
+                  </div>
+                </div>
+              </div>
+          ))}
+          <AddStudent />
+        </div>
+        
       </div>
     )
   }

@@ -1,9 +1,36 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import { withAuthConsumer } from '../../contexts/AuthStore';
+import classroomService from '../../services/classroom-service';
 
+const validations = {
+    reason: (value) => {
+    let message;
+    if(!value){
+      message = 'Reason is required'
+    }
+    else if(value.length > 3 && value.length < 20){
+      message = 'Invalid long Reason '
+    }
+    return message;
+  }
+}
 class Score extends Component {
     state = {
         show: false,
+        selector: false,
+        button: true,
+        score: {
+            type:'',
+            reason:'For question in classroom',
+            students:[],
+            scoreNumber: '1',
+            classroom:''
+        },
+        touch: {},
+        errors: {
+            reason: validations.reason()
+        }
     }
 
     handleClose = () => {
@@ -11,13 +38,63 @@ class Score extends Component {
       }
     
     handleShow = () => {
-        this.setState({ show: true });
+        this.setState({ 
+            show: true,
+            score: {
+                ...this.state.score,
+              students: this.props.studentSelected.map(student => student.id),
+              teacher: this.props.user.id,
+              classroom: this.props.classroom.id
+            } 
+          })
     }
 
+    handleChange = (event) => {
+        const { name, value } = event.target;
+        this.setState({
+          score: {
+            ...this.state.score,
+            [name]: value
+          },
+          errors: {
+            ...this.state.errors,
+            [name]: validations[name] && validations[name](value)
+          }
+        })
+      }
+    
+    handleBlur = (event) => {
+    const { name } = event.target;
+    this.setState({
+        touch: {
+        ...this.state.touch,
+        [name]: true
+        }
+    })
+    }
+
+    handleDisableSelect = () => {
+        this.setState({ selector: true });
+    }
+
+    handleActiveButton = () => {
+        this.setState({ button: false})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        
+        const scoreData = { ...this.state.score }
+        classroomService.createScore(scoreData)
+        .then(this.setState({ show: false }))
+        .then(this.props.deselectAll) 
+      }
+
     render() {
+        const { score, selector, button } = this.state
         return (
             <>
-                <Button variant="outline-secondary rounded-pill"  onClick={this.handleShow}>
+                <Button variant="secondary"  onClick={this.handleShow}>
                     Score
                 </Button>
 
@@ -26,73 +103,80 @@ class Score extends Component {
                         <Modal.Title>Score round</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                    <div className="form-check d-flex justify-content-around">
+                        <div className="form-check form-check-inline flex-column-reverse">
+                            <input className="form-check-input" 
+                            type="radio" 
+                            name="type" 
+                            id="+Radio" 
+                            value="positive"
+                            checked={score.type === "positive"}
+                            onChange={this.handleChange}
+                            onClick={this.handleActiveButton}
+                            />
+                            <label className="form-check-label" htmlFor="+radio">Positive</label>
+                        </div>
+                        <div className="form-check form-check-inline flex-column-reverse">
+                        <input className="form-check-input" 
+                            type="radio" 
+                            name="type" 
+                            id="-Radio" 
+                            value="negative"
+                            checked={score.type === "negative"}
+                            onChange={this.handleChange}
+                            onClick={this.handleActiveButton}
+                            />
+                            <label className="form-check-label" htmlFor="-Radio">Negative</label>
+                        </div>
+                    </div>
                         
+                    <hr/>
+                    <div className="d-flex flex-column">
+                        <div className="form-group flex-column col-6">
+                            <label htmlFor="scoreNumber">Score Number</label>
+                            <input type="number" 
+                            className="form-control" 
+                            id="scoreNumber"
+                            name="scoreNumber" 
+                            value={score.scoreNumber}
+                            onChange={this.handleChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <p className="mb-0">Reason:</p>
+                            <select id="selectReason" className="form-control" name="reason" onChange={this.handleChange} disabled={selector}>
+                                <option>For question in classroom</option>
+                                <option>For schoolfellow</option>
+                                <option>For homework</option>
+                                <option>For interest</option>
+                                <option>For behavior</option>
+                            </select>
+                            <small>You can use a predefined reason</small>
+
+                            <input type="text" 
+                            className="form-control mt-3" 
+                            id="newReason"
+                            placeholder="Other reason..."
+                            name="reason"
+                            onChange={this.handleChange}
+                            onClick={this.handleDisableSelect}
+                            />
+                            <small className="mt-3">Or create a new reason</small>
+                        </div>
+                    </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                    </Button>
-                        <Button variant="primary" onClick={this.handleClose}>
-                            Save Changes
-                    </Button>
+                        <Button variant="info" onClick={this.handleSubmit} disabled={button}>
+                            Save score
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             </>
         )
     }
 
-    // <div> 
-    // <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" data-toggle="modal" data-target="#addPointsModal">Score</button>
-    // <div class="modal fade" id="addPointsModal" tabindex="-1" role="dialog" aria-labelledby="addPointsModal" aria-hidden="true">
-    //     <div class="modal-dialog modal-dialog-centered" role="document">
-    //     <div class="modal-content p-3">
-    //         <div class="modal-header">
-    //             <img class="img-pts" src="./coolito6.svg" alt=""/>
-    //             <h3 class="modal-title ml-3" id="exampleModalLabel">Ronda de Puntos</h3>
-    //             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    //                 <span aria-hidden="true">&times;</span>
-    //             </button>
-    //         </div>
-    //         <div class="modal-body">
-    //             <div class="form-check d-flex justify-content-around">
-    //                 <div class="form-check form-check-inline flex-column-reverse">
-    //                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-    //                     <label class="form-check-label" for="inlineRadio1">Positivo</label>
-    //                 </div>
-    //                 <div class="form-check form-check-inline flex-column-reverse">
-    //                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-    //                     <label class="form-check-label" for="inlineRadio2">Negativo</label>
-    //                 </div>
-    //             </div>
 
-    //             <hr/>
-    //             <div class="d-flex flex-column">
-    //                 <div class="form-group flex-column col-6">
-    //                     <label for="exampleInputEmail1">Número de Puntos</label>
-    //                     <input type="number" class="form-control" id="pts-number" aria-describedby="emailHelp" placeholder="Mínimo 1" value="1"/>
-    //                 </div>
-    //                 <div class="form-group">
-    //                     <p class="mb-0">Puntos por:</p>
-
-    //                     <select id="inputState" class="form-control">
-    //                         <option selected>Pregunta en clase</option>
-    //                         <option>Buen compañero</option>
-    //                     </select>
-    //                     <small>Usa una categoría guardada</small>
-
-    //                     <input type="text" class="form-control mt-3" id="pts-concept" name="pts-concept" placeholder="Por buen compañero..."/>
-    //                     <small class="mt-3">Crea una nueva categoria de puntos</small>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div class="modal-footer">
-    //         <button type="button" class="btn btn-info">+ Añadir Puntos</button>
-    //         </div>
-    //     </div>
-    //     </div>
-    // </div>
-    // </div>
 
 }
 
-export default Score;
+export default withAuthConsumer(Score);

@@ -452,14 +452,26 @@
   .student {
     zoom: 68%;
     margin: 2px 2px;
-    padding-top: 0px;
+    padding-top: 5px;
   }
   .board-students {
-    margin: 1.5em;
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
   }
-  .student-checked{
-    border: 2px solid lightseagreen;
+
+  .btn-add-student{
+    height: fit-content;
+  }
+  
+  .student-selected{
+    background: lightblue;
     border-radius: 5px;
+  }
+
+  .student-out{
+    opacity: 0.4;
   }
   
   .avatar-card {
@@ -595,6 +607,9 @@
   color: white;
   padding: 26px;
   border-radius: 100px;
+  width: 127px;
+  display: flex;
+  justify-content: center;
 }
 
 .list-total{
@@ -606,6 +621,9 @@
   border-radius: 100px;
   padding: 8px;
   border: 4px solid white;
+  width: 52px;
+  display: flex;
+  justify-content: center;
 }
 
 /* ************* PUNTOS *************** */
