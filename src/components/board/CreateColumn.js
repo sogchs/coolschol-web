@@ -8,7 +8,8 @@ class CreateColumn extends Component {
   
   state = {
     column: {
-      title: ''
+      title: '',
+      classroom:''
     },
     errors: {
       title: true
