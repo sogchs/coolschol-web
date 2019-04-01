@@ -4,14 +4,13 @@ import classroomService from '../../services/classroom-service';
 import Score from './Score';
 import AddStudent from './AddStudent';
 import CheckList from './CheckList';
-
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 
 class Classroom extends Component {
   state = {
     studentsSelect: [],
-    classroom: ''
-
+    nonAttendance:[]
   }
 
   handleSelectStudent = (student) => {
@@ -31,6 +30,7 @@ class Classroom extends Component {
       })
     }
   }
+
 
   handleSelectAll = () => {
     this.setState({ studentsSelect:[]})
@@ -57,20 +57,48 @@ class Classroom extends Component {
       })
   }
 
+  updateStudentByChecklist = () => {
+    classroomService.getChecklist(this.props.classroom.id)
+    .then(checklist => this.setState({
+      nonAttendance: checklist.nonAttendance.map(checklist => checklist)
+    })
+  )}
+
+  componentDidMount(){
+    this.updateStudentByChecklist()
+  }
+
+
+
 
   render() {
+
     return(
       <div>
         <div className="btn-classroom-action">
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleRandomSelect}>Random</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleSelectAll}>Select all</button>
-          <button type="button" className="btn btn-outline-secondary btn-sm rounded-pill" onClick={this.handleDeselectAll}>Deselect all</button>
-          <CheckList />
-          <Score />
+          <ButtonGroup size="sm" className="mx-auto" >
+            <Button variant="outline-secondary" onClick={this.handleRandomSelect}>Random</Button>
+            <Button variant="outline-secondary" onClick={this.handleSelectAll}>Select All</Button>
+            <Button variant="outline-secondary" onClick={this.handleDeselectAll}>Deselect All</Button>
+            <CheckList
+            studentSelected={this.state.studentsSelect} 
+            totalStudent={this.props.classroom.students.length}
+            deselectAll={this.handleDeselectAll}
+            updateStudents={this.updateStudentByChecklist}
+            />
+            <Score 
+            studentSelected={this.state.studentsSelect}
+            deselectAll={this.handleDeselectAll}
+            />
+          </ButtonGroup>
         </div>
+        
         <div className="board-students">
           {this.props.classroom.students.map(student => (
-              <div className={`student ${this.state.studentsSelect.includes(student) && 'student-selected'}`}
+              <div className={`student 
+                    ${this.state.studentsSelect.includes(student) && 'student-selected'}
+                    ${this.state.nonAttendance.includes(student.id) && 'student-out'}
+                    `}
                 name="student"
                 key={student.id} 
                 onClick={() => this.handleSelectStudent(student)}

@@ -469,6 +469,10 @@
     background: lightblue;
     border-radius: 5px;
   }
+
+  .student-out{
+    opacity: 0.4;
+  }
   
   .avatar-card {
     position: absolute;
@@ -603,6 +607,9 @@
   color: white;
   padding: 26px;
   border-radius: 100px;
+  width: 127px;
+  display: flex;
+  justify-content: center;
 }
 
 .list-total{
@@ -614,6 +621,9 @@
   border-radius: 100px;
   padding: 8px;
   border: 4px solid white;
+  width: 52px;
+  display: flex;
+  justify-content: center;
 }
 
 /* ************* PUNTOS *************** */

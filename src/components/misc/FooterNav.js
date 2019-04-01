@@ -21,9 +21,12 @@ class FooterNav extends Component {
 
     return(
       <nav className="nav-footer navbar navbar-dark bg-dark">
+      {this.props.apps !== false &&
         <Link className="btn-nav-footer" to="/classroom">
           <span className="icon-home-chip"></span>
         </Link>
+      }
+      {this.props.apps !== false &&
         <ButtonToolbar>
           <DropdownButton
             drop="up"
@@ -40,7 +43,7 @@ class FooterNav extends Component {
             <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-temporizador"></span></Dropdown.Item>
           </DropdownButton>
         </ButtonToolbar>
-
+      }
         <ButtonToolbar>
           <DropdownButton
             drop="up"
@@ -49,7 +52,9 @@ class FooterNav extends Component {
             key="up"
             title={<span className="icon-ajustes"></span>}
           >
+            {this.props.apps !== false &&
             <Dropdown.Item eventKey="1" className="btn-nav-footer-v"><span className="icon-set-classroom"></span></Dropdown.Item>
+            }
             <Dropdown.Item eventKey="2" className="btn-nav-footer-v"><span className="icon-set-profile"></span></Dropdown.Item>
             <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-log-out" onClick={this.handleLogout}></span></Dropdown.Item>
           </DropdownButton>
