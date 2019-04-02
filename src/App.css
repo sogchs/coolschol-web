@@ -443,7 +443,7 @@
       width: 10em;
       margin: 8px 0;
     }
-  /* ********* BOARD CLASS ************ */
+  /* ********* CLASSROOM ************ */
   .btn-classroom-action{
     display: flex;
     justify-content: space-around !important;
@@ -631,12 +631,13 @@
   width: 70px;
 }
 
-/* ************* TABLON ****************** */
+/* ************* BOARD ****************** */
 .container-columns{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 80px;
 }
 
 .column-item{
@@ -646,6 +647,7 @@
   border-radius: 5px;
   padding: 10px;
   border: 2px solid lightgrey;
+  background-color: rgb(240, 240, 240);
 }
 .card-item {
   border-radius: 3px;
@@ -670,6 +672,27 @@
   border-radius: 20px;
   margin: 20px;
 }
+
+.custom-file-input {
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  margin: -8px 0 0 -16px;
+}
+.img-upload{
+  width: 4em;
+  height: 4em;
+  border-radius: 5px;
+  border: 1px solid cornflowerblue;
+  object-fit: cover;
+  margin-right: 1em;
+}
+.add-img{
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+}
+
 
 /* ******* CHAT ********* */
 
@@ -810,7 +833,6 @@
   padding: 16px;
   justify-content: space-between;
 }
-
 
 
 }

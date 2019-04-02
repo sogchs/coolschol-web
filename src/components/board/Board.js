@@ -12,7 +12,7 @@ class Board extends Component {
   }
 
   fetchColumns = () => {
-    boardService.listColumns()
+    boardService.listColumns(this.props.classroom.id)
     .then(columns => this.setState({ columns }))
   }
 

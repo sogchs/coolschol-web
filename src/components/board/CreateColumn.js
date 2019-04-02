@@ -9,7 +9,7 @@ class CreateColumn extends Component {
   state = {
     column: {
       title: '',
-      classroom:''
+      classroom: this.props.classroom.id
     },
     errors: {
       title: true
@@ -46,11 +46,10 @@ class CreateColumn extends Component {
   createColumn = (event) => {
     event.preventDefault();
     
-    const columnData = {
-      ...this.state.column,
-      classroom: this.props.classroom.id
+    const column = {
+      ...this.state.column
     }
-    boardService.createColumn(columnData)
+    boardService.createColumn(column)
     .then(this.props.fetchColumns)
     .then(this.setState({ show: false }))
   }
@@ -65,7 +64,7 @@ class CreateColumn extends Component {
     
     return(
       <div>
-          <Button variant="column-add btn btn-outline-info" onClick={this.handleShow}>+ New Column</Button>
+          <Button variant="column-add btn btn-outline-info mt-3" onClick={this.handleShow}>+ New Column</Button>
 
           <Modal show={show} onHide={this.handleClose}>
             <Modal.Header closeButton>
