@@ -12,7 +12,8 @@ class EditEvent extends Component {
       classroom: this.props.classroom.id,
       start: '',
       end: '',
-      role: ''
+      role: '',
+      color: ''
     },
     errors: {
       title: true
@@ -26,7 +27,8 @@ class EditEvent extends Component {
       title: this.props.title,
       start: this.props.start,
       end: this.props.end,
-      role: this.props.role
+      role: this.props.role,
+      color: this.props.color
     }})
   }
 
@@ -52,6 +54,27 @@ class EditEvent extends Component {
     this.setState({
       ...this.state.touch,
       [name]: true
+    })
+  }
+  changeRoleClassroom = (e) =>{
+    const { name, value } = e.target;
+    this.setState({ 
+      event: {
+        ...this.state.event,
+        [name] : value,
+        color: "rgb(30, 163, 183)"
+      }
+    })
+  }
+
+  changeRoleSchool = (e) =>{
+    const { name, value } = e.target;
+    this.setState({ 
+      event: {
+        ...this.state.event,
+        [name] : value,
+        color: "rgb(164, 164, 164)"
+      }
     })
   }
 
@@ -104,7 +127,7 @@ class EditEvent extends Component {
                 id="roleEvent" 
                 value="classroom"
                 checked={event.role === "classroom"}
-                onChange={this.handleChange}
+                onChange={this.changeRoleClassroom}
                 />
                 <label className="form-check-label" htmlFor="roleRegister">Just this classroom</label>
               </div>
@@ -115,7 +138,7 @@ class EditEvent extends Component {
                   id="roleEvent2" 
                   value="school"
                   checked={event.role === "school"}
-                  onChange={this.handleChange}
+                  onChange={this.changeRoleSchool}
                   />
                 <label className="form-check-label" htmlFor="roleEvent2">All school</label>
                 <div className="invalid-feedback">{errors.role}</div>

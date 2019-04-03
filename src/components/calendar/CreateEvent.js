@@ -48,19 +48,26 @@ class CreateEvent extends Component {
     
   }
 
-  changeColor = () =>{
-    if(this.state.event.role === "school"){
-      this.setState({ 
-        event: { 
+  changeRoleClassroom = (e) =>{
+    const { name, value } = e.target;
+    this.setState({ 
+      event: {
         ...this.state.event,
-        color: "red"}})
-      console.log("colooor")
-    } else{
-      this.setState({ 
-        event: { 
+        [name] : value,
+        color: "rgb(30, 163, 183)"
+      }
+    })
+  }
+
+  changeRoleSchool = (e) =>{
+    const { name, value } = e.target;
+    this.setState({ 
+      event: {
         ...this.state.event,
-        color: "blue"}})
-    }
+        [name] : value,
+        color: "rgb(164, 164, 164)"
+      }
+    })
   }
 
   createEvent = (e) => {
@@ -109,7 +116,7 @@ class CreateEvent extends Component {
                 id="roleEvent" 
                 value="classroom"
                 checked={event.role === "classroom"}
-                onChange={this.handleChange}
+                onChange={this.changeRoleClassroom}
                 />
                 <label className="form-check-label" htmlFor="roleRegister">Just this classroom</label>
               </div>
@@ -120,7 +127,7 @@ class CreateEvent extends Component {
                   id="roleEvent2" 
                   value="school"
                   checked={event.role === "school"}
-                  onChange={this.handleChange}
+                  onChange={this.changeRoleSchool}
                   />
                 <label className="form-check-label" htmlFor="roleEvent2">All school</label>
                 <div className="invalid-feedback">{errors.role}</div>
