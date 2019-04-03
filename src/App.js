@@ -8,10 +8,13 @@ import { Login, Register } from './components/auth';
 import Home from './components/home/Home';
 import Classroom from './components/classroom/Classroom';
 import Board from './components/board/Board';
+import Calendar from './components/calendar/Calendar';
 
 
 
 class App extends Component {
+
+  
   render() {
     return (
       <div className="App">
@@ -25,6 +28,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/board" component={Board} />
+          <Route exact path="/calendar" component={Calendar} />
 
           <PrivateRoute exact path="/classroom" role={"teacher"} component={Classroom} />
 
