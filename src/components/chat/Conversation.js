@@ -66,9 +66,10 @@ class Conversation extends Component {
     return (
       <div className="">
         <div className="server-card">
-          <img src={this.props.imageURL} alt=""/>
-          <p>{this.props.name}</p>
           <Button onClick={this.props.hideConversation} className="btn-back"><i className="fas fa-arrow-left"></i></Button>
+          <img src={this.props.imageURL} alt=""/>
+          <p>{this.props.name} {this.props.surname}</p>
+          
         </div>
         <div className="chat">
           <div className="conversation">

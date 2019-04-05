@@ -6,7 +6,11 @@ const listMessages = (localUser, otherUser) => http.get(`/chat/${localUser}/${ot
   const createMessage = (message) => http.post('/chat', message)
   .then(response => response.data);
 
+  const listRead = (id) => http.get(`/chat/${id}`)
+  .then(response => response.data);
+
 export default {
   listMessages,
-  createMessage
+  createMessage,
+  listRead
 }

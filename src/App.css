@@ -749,7 +749,7 @@
   margin: 0 auto;
 }
 .message-r{
-  background-color: lightgray;
+  background-color: rgb(242, 242, 242);
   padding: 10px 15px;
   border-radius: 20px;
   width: fit-content;
@@ -757,7 +757,7 @@
   margin-left: auto;
 }
 .message-s{
-  background-color: lightblue;
+  background-color: rgb(190, 235, 234);
   padding: 10px 15px;
   border-radius: 20px;
   width: fit-content;
@@ -792,7 +792,7 @@
   color: lightgrey;
   background-color: white !important;
   border-color: white !important;
-  margin-left: auto;
+  margin-right: 30px;
   font-size: 1.7em;
 }
 
