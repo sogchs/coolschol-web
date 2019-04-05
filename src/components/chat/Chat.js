@@ -60,7 +60,7 @@ class Chat extends Component {
             </Button>
           ))}
           </div>
-          <div className="conversation" hidden={this.state.showConversation}>
+          <div className="" hidden={this.state.showConversation}>
             <Conversation 
             {...this.state.selected} 
             hideConversation={this.handleHideConversation}

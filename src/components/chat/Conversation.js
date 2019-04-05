@@ -18,12 +18,12 @@ class Conversation extends Component {
       content: '',
       recipient:'',
       sender:''
-
     },
     errors: {
       content: validations.content()
     },
-    touch: {}
+    touch: {},
+    liveMessages: []
   }
 
   handleChange = (event) => {
@@ -54,46 +54,53 @@ class Conversation extends Component {
 
   createMessage = (event) =>{
     event.preventDefault();
-
+    this.setState({liveMessages:[...this.state.liveMessages, this.state.message.content]})
+    
     chatService.createMessage(this.state.message)
     .then(this.setState({message:{content:''}}))
-    .then(this.props.hideConversation)
 
   }
 
   render() {
 
     return (
-      <div className="conversation">
+      <div className="">
         <div className="server-card">
-            <img src={this.props.imageURL} alt=""/>
-            <p>{this.props.name}</p>
-            <Button onClick={this.props.hideConversation} className="btn-back"><i className="fas fa-arrow-left"></i></Button>
+          <img src={this.props.imageURL} alt=""/>
+          <p>{this.props.name}</p>
+          <Button onClick={this.props.hideConversation} className="btn-back"><i className="fas fa-arrow-left"></i></Button>
         </div>
         <div className="chat">
-            <div className="conversation">
-                {this.props.messages.map(message => (
-                <div key={message.id} className={` ${message.recipient === this.props.id ? 'message-r' : 'message-s'} `}>
-                    {message.content}
-                </div>
-                ))}
-            </div>
-            <form className="write" onSubmit={this.createMessage}>
-                <div className="input-group mb-3">
-                    <input type="text" 
-                    className={`form-control form-control-sm ${this.state.touch.conversation ? (this.state.errors.conversation ? 'is-invalid' : 'is-valid') : ''}`} 
-                    name="content"
-                    value={this.state.message.content}
-                    onChange={this.handleChange}
-                    onBlur={this.handleBlur}
-                    autoComplete="off"
-                    />
-                    <div className="invalid-feedback">{this.state.errors.content}</div>
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-info" type="submit"><i className="fas fa-rocket"></i></button>
-                    </div>
-                </div>
-            </form>
+          <div className="conversation">
+            <div className="container-conversation">
+              {this.props.messages.map(message => (
+              <div key={message.id} className={` ${message.recipient === this.props.id ? 'message-r' : 'message-s'} `}>
+                  {message.content}
+              </div>
+              ))}
+              {this.state.liveMessages.map(content => (
+              <div key={content} className="message-r">
+                  {content}
+              </div>
+              ))}
+          </div>
+          </div>
+          <form className="write" onSubmit={this.createMessage}>
+              <div className="input-group mb-3">
+                  <input type="text" 
+                  className={`form-control form-control-sm ${this.state.touch.conversation ? (this.state.errors.conversation ? 'is-invalid' : 'is-valid') : ''}`} 
+                  name="content"
+                  value={this.state.message.content}
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  autoComplete="off"
+                  />
+                  <div className="invalid-feedback">{this.state.errors.content}</div>
+                  <div className="input-group-append">
+                      <button className="btn btn-outline-info" type="submit"><i className="fas fa-rocket"></i></button>
+                  </div>
+              </div>
+          </form>
         </div>
       </div>
     );

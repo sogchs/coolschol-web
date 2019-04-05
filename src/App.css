@@ -729,12 +729,19 @@
   margin-left: 20px;
 }
 
-.chat{
-  padding: 0 10px;
+.write{
+  padding: 0 12px;
 }
 
 .conversation{
-  height: 380px;
+  height: 403px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.container-conversation{
+  margin: 0 12px;
 }
 
 .write input{
