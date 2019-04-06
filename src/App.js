@@ -11,6 +11,7 @@ import Board from './components/board/Board';
 import Calendar from './components/calendar/Calendar';
 
 import Chat from './components/chat/Chat';
+import Groups from './components/Groups/Groups';
 
 
 
@@ -32,6 +33,7 @@ class App extends Component {
           <Route exact path="/board" component={Board} />
           <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/chat" component={Chat} />
+          <Route exact path="/groups" component={Groups} />
           <PrivateRoute exact path="/classroom" role={"teacher"} component={Classroom} />
 
           {/* <PrivateRoute exact path="/" role={"Student"} component={} />

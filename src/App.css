@@ -912,7 +912,57 @@
   background: aliceblue !important;
 }
 
+/* ************* GROUP *********** */
+.group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
 
+.container-group{
+  height: fit-content;
+  background-color: rgb(30, 163, 183);
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 360px;
+}
+
+.container-subgroups{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.header-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-subgroup{
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin: 0;
+  font-weight: 700;
+}
+
+.title-group{
+  font-size: 1.5em;
+  color: gainsboro;
+  font-weight: 200;
+}
+
+.btn-addSubgroup{
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.btn-delete-group{
+  color: darkslategrey;
+  padding: 0;
+  font-size: 1.3em;
+}
 
 }
 
