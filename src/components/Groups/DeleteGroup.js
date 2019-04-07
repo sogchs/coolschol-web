@@ -26,7 +26,7 @@ class DeleteGroup extends Component {
     return(
       <>
         <Button variant="link" className="btn-delete-group" onClick={this.handleShow} >
-        <i class="far fa-trash-alt"></i>
+        <i className="far fa-trash-alt"></i>
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>

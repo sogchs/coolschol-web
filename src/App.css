@@ -964,6 +964,63 @@
   font-size: 1.3em;
 }
 
+/* ********* TIMER ********* */
+.container-timer{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  flex-direction: column;
+}
+
+.btn-group-timer{
+  margin: 0 40px;
+}
+
+.collapse-c{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.time-body{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.time-display{
+  font-size: 4em;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+.timer-input{
+  font-size: 4em;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+
+.buttons-countdown{
+  display: flex;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+.numbers-chronometer{
+  font-size: 4rem;
+  font-weight: 100;
+  margin-bottom: 40px;
+  width: 240px;
+}
+
+.buttons-chronometer{
+  display: flex;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+
+
+
 }
 
 
