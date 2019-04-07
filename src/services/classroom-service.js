@@ -23,7 +23,15 @@ const createScore = (scoreData) => http.post('/classroom/score', scoreData);
 
 const getChecklist = (id) => http.get(`/classroom/checklist/${id}`)
   .then(response => response.data);
-  
+
+const detailStudent = (id) => http.get(`/classroom/student/${id}`)
+.then(response => response.data);
+
+const listScore = (id) => http.get(`/classroom/score/${id}`)
+.then(response => response.data);
+
+const listChecklist = (id) => http.get(`/classroom/checklist-detail/${id}`)
+.then(response => response.data);
 
 export default {
   createClassroom,
@@ -34,5 +42,8 @@ export default {
   searchUserByEmail,
   createChecklist,
   createScore,
-  getChecklist
+  getChecklist,
+  detailStudent,
+  listScore,
+  listChecklist
 }

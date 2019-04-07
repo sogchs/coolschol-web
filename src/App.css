@@ -1018,8 +1018,72 @@
   font-size: 1.2em;
 }
 
+/* *********** DETAIL ********** */
+.container-detail{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
+.form-detail{
+  display: flex;
+  flex-direction: column;
+}
 
+.select-detail{
+  width:  100%;
+}
+
+.form-detail-items{
+  display: flex;
+  flex: row;
+}
+
+.detail-student-container{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.detail-header{
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-img{
+  height: 60px;
+}
+.detail-header-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 15px;
+}
+
+.detail-name{
+  font-size: 2em;
+  margin: 0;
+}
+.detail-email{
+  font-size: 1em;
+  margin: 0;
+  color: grey;
+}
+
+.detail-title-table{
+  display: flex;
+  align-items: baseline;
+}
+
+.detail-num{
+  font-size: 1.2em;
+  background-color: darkturquoise;
+  padding: 0 9px;
+  border-radius: 20px;
+  margin-left: 20px;
+  color: white;
+  font-weight: 700;
+}
 
 }
 

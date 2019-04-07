@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './guards/PrivateRoute';
 
 import './App.css';
@@ -13,6 +13,7 @@ import Calendar from './components/calendar/Calendar';
 import Chat from './components/chat/Chat';
 import Groups from './components/Groups/Groups';
 import Timer from './components/timer/Timer';
+import DetailStudent from './components/classroom/DetailStudent';
 
 
 
@@ -36,6 +37,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/timer" component={Timer} />
+          <Route exact path="/student" component={DetailStudent} />
           <PrivateRoute exact path="/classroom" role={"teacher"} component={Classroom} />
 
           {/* <PrivateRoute exact path="/" role={"Student"} component={} />

@@ -5,6 +5,8 @@ import Score from './Score';
 import AddStudent from './AddStudent';
 import CheckList from './CheckList';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 class Classroom extends Component {
@@ -77,9 +79,9 @@ class Classroom extends Component {
       <div>
         <div className="btn-classroom-action">
           <ButtonGroup size="sm" className="mx-auto" >
-            <Button variant="outline-secondary" onClick={this.handleRandomSelect}>Random</Button>
-            <Button variant="outline-secondary" onClick={this.handleSelectAll}>Select All</Button>
-            <Button variant="outline-secondary" onClick={this.handleDeselectAll}>Deselect All</Button>
+            <Button variant="outline-secondary" onClick={this.handleRandomSelect}><i className="fas fa-random"></i></Button>
+            <Button variant="outline-secondary" onClick={this.handleSelectAll}><i className="fas fa-check"></i> All</Button>
+            <Button variant="outline-secondary" onClick={this.handleDeselectAll}><i className="fas fa-check"></i> None</Button>
             <CheckList
             studentSelected={this.state.studentsSelect} 
             totalStudent={this.props.classroom.students.length}
@@ -90,6 +92,8 @@ class Classroom extends Component {
             studentSelected={this.state.studentsSelect}
             deselectAll={this.handleDeselectAll}
             />
+            <Link variant="secondary"  to="/student">Detail</Link>
+            {/* <Link variant="secondary"  to={`/student/${this.state.studentsSelect.map(student => student.id)}`}>Detail</Link> */}
           </ButtonGroup>
         </div>
         
@@ -115,7 +119,7 @@ class Classroom extends Component {
           ))}
           <AddStudent />
         </div>
-        
+          
       </div>
     )
   }
