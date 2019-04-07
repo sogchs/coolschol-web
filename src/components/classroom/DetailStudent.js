@@ -13,7 +13,8 @@ class DetailStudent extends Component {
     hidden: true,
     disabled: true,
     score: [],
-    checklist: []
+    checklist: [],
+    pos:''
 
   }
 
@@ -58,6 +59,7 @@ class DetailStudent extends Component {
 
   render() {
     const { student,hidden, disabled, score, checklist } = this.state
+    
     return(
 
       <div className="container-detail">

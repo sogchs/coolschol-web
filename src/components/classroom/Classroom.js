@@ -74,7 +74,7 @@ class Classroom extends Component {
 
 
   render() {
-
+    
     return(
       <div>
         <div className="btn-classroom-action">
@@ -92,8 +92,7 @@ class Classroom extends Component {
             studentSelected={this.state.studentsSelect}
             deselectAll={this.handleDeselectAll}
             />
-            <Link variant="secondary"  to="/student">Detail</Link>
-            {/* <Link variant="secondary"  to={`/student/${this.state.studentsSelect.map(student => student.id)}`}>Detail</Link> */}
+            <Link className="btn btn-secondary"  to="/student">Detail</Link>
           </ButtonGroup>
         </div>
         
@@ -108,7 +107,7 @@ class Classroom extends Component {
                 onClick={() => this.handleSelectStudent(student)}
                 >
                 <img className="avatar-card" src={student.imageURL} alt=""/>
-                <span className="avatar-points">10</span>
+                {/* <span className="avatar-points">10</span> */}
                 <div className="card">
                   <div className="card-p">
                     <p className="card-name">{student.name}</p>

@@ -14,6 +14,7 @@ import Chat from './components/chat/Chat';
 import Groups from './components/Groups/Groups';
 import Timer from './components/timer/Timer';
 import DetailStudent from './components/classroom/DetailStudent';
+import Profile from './components/auth/Profile';
 
 
 
@@ -38,6 +39,7 @@ class App extends Component {
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/timer" component={Timer} />
           <Route exact path="/student" component={DetailStudent} />
+          <Route exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/classroom" role={"teacher"} component={Classroom} />
 
           {/* <PrivateRoute exact path="/" role={"Student"} component={} />
