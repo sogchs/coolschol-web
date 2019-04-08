@@ -693,6 +693,13 @@
   font-size: 2em;
 }
 
+.card-subtitle{
+  font-size: 1.2em;
+  font-weight: 100;
+  color: rgb(30, 163, 183)
+}
+
+
 
 /* ******* CHAT ********* */
 

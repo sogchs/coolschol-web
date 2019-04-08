@@ -2,11 +2,24 @@ import React, {Component} from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import { Modal, Button, Collapse, ButtonGroup } from 'react-bootstrap';
 import boardService from '../../services/board-service';
+import calendarService from '../../services/calendar-service';
 
 
-const validators = {
-    title:     v => v.length > 0,
-    description:    v => v.length > 0
+const validations = {
+    title:(value) => {
+      let message;
+      if(!value){
+        message = 'Title is required'
+      }
+      return message;
+    },
+    description:(value) => {
+      let message;
+      if(!value){
+        message = 'Description is required'
+      }
+      return message;
+    }
   }
 class CreateCard extends Component {
 
@@ -15,7 +28,7 @@ class CreateCard extends Component {
           title: '',
           description: '',
           column: this.props.columnId,
-          attachFiles:'',
+          attachFiles: [],
           filePreview:'',
           dateStart:'',
           dateFinish:'',
@@ -24,29 +37,30 @@ class CreateCard extends Component {
           conceptPay:''
         },
         errors: {
-          title: true,
-          description: true
+          title: validations.title(),
+          description: validations.description()
         },
         touch: {},
         show: false,
         date: false,
         pay: false,
-        attach: false
+        attach: false,
+        addEvent: false
       }
 
       handleChange = (e) => {
         const { name, value, files } = e.target;
     
-        const isValid = validators[name] === undefined || validators[name](value);
+        //const isValid = validations[name] === undefined || validations[name](value);
     
-        this.setState({
+        this.setState({ 
           card: {
             ...this.state.card,
-            [name]: (files && files[0]) ? files[0] : value
+            [name]: (files && files[0]) ? [...this.state.card.attachFiles, files[0]] : value
           },
           errors: {
             ...this.state.errors,
-            [name]: !isValid
+            [name]: validations[name] && validations[name](value)
           } 
           
         })
@@ -65,7 +79,20 @@ class CreateCard extends Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
-  
+
+      if(this.state.addEvent){
+        calendarService.createEvent({
+          title: this.state.card.title,
+          classroom: this.props.classroom.id,
+          start: this.state.card.dateStart,
+          end: this.state.card.dateFinish,
+          role: 'classroom',
+          color: "rgb(30, 163, 183)"})
+        
+        .then(console.log("done"))
+      } 
+      
+      
       const cardData = {
         ...this.state.card
       }
@@ -82,12 +109,12 @@ class CreateCard extends Component {
 render(){
   
     const isError = Object.values(this.state.errors).some(error => error);
-    const { card, errors, touch, show, date, pay, attach } = this.state;
+    const { card, errors, touch, show, date, pay, attach, addEvent } = this.state;
 
     return (
-      <>
-        <Button variant="outline-secondary" className="fas fa-plus m-2 rounded-pill" onClick={this.handleShow}></Button>
-
+      <> {this.props.user.role === "teacher" &&
+        <Button variant="outline-info" className="fas fa-plus m-2 rounded-pill" onClick={this.handleShow}></Button>
+        }
         <Modal show={show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Create a new card</Modal.Title>
@@ -97,7 +124,7 @@ render(){
               <div className="form-group">
                 <label htmlFor="titleCard">Title</label>
                 <input type="text" 
-                  className={`form-control form-control-sm ${touch.title ? (errors.title ? 'is-invalid' : 'is-valid') : ''}`} 
+                  className={`form-control ${touch.title && errors.title && 'is-invalid'}`} 
                   id="titleCard" 
                   value={card.title} 
                   onChange={this.handleChange}
@@ -105,12 +132,13 @@ render(){
                   name="title"
                   autoComplete="off"
                   />
+                  <div className="invalid-feedback">{errors.title}</div>
               </div>
 
               <div className="form-group">
                 <label htmlFor="descriptionCard">Description</label>
                 <textarea type="text" 
-                  className={`form-control form-control-sm ${touch.description ? (errors.description ? 'is-invalid' : 'is-valid') : ''}`} 
+                  className={`form-control ${touch.description && errors.description && 'is-invalid'}`} 
                   id="descriptionCard" 
                   value={card.description} 
                   onChange={this.handleChange}
@@ -119,6 +147,7 @@ render(){
                   autoComplete="off"
                   rows="3"
                   />
+                  <div className="invalid-feedback">{errors.description}</div>
               </div>
 
               <ButtonGroup >
@@ -148,8 +177,11 @@ render(){
                   </Button>
                 </ButtonGroup>
                 <Collapse in={this.state.attach}>
-                  <div id="collapse-attach">
-                  {this.state.card.attachFiles && <img className="img-upload" src={URL.createObjectURL(this.state.card.attachFiles)} alt="..."/>}
+                  <div id="collapse-attach" className="mt-3">
+
+                  {this.state.card.attachFiles.map((img, i) => (
+                    <img key={i} className="img-upload" src={URL.createObjectURL(img)} alt="..."/>
+                  ))}
 
                   <button type="button" className="add-img btn btn-outline-info">
                     <input 
@@ -165,27 +197,33 @@ render(){
                 </Collapse>
                 <Collapse in={this.state.date}>
                   <div id="collapse-date">
-                  <div className="m-2">
-                      <div className="mt-3">
-                        <label htmlFor="dateStart" className="col-form-label">Start</label>
-                        <input type="date" className="ml-3"
+                  <div className="mt-2">
+                      <p className="mt-3">Select one date</p>
+                      <div className="date-card">
+                        <input className="" type="date" 
                         name="dateStart" 
-                        step="1" 
                         value={card.dateStart}
                         onChange={this.handleChange}
                         />
+                        <label htmlFor="dateStart" className="ml-2">Start</label>
                       </div>
-                      <div className="mt-3">
-                        <label htmlFor="dateFinish" className="col-form-label">Finish</label>
-                        <input className="ml-3" type="date" 
+                      <div className="mt-3 date-card">
+                        <input className="" type="date" 
                         name="dateFinish" 
                         value={card.dateFinish}
                         onChange={this.handleChange}
                         />
+                        <label htmlFor="dateFinish" className="ml-2">Finish</label>
                       </div>
                       
                       <div className="custom-control custom-switch mt-2">
-                        <input type="checkbox" className="custom-control-input" id="customSwitch1"/>
+                        <input type="checkbox" 
+                          className="custom-control-input" 
+                          id="customSwitch1"
+                          name="addEvent" 
+                          value={addEvent}
+                          onChange={() => this.setState({ addEvent : !addEvent})}
+                          />
                         <label className="custom-control-label" htmlFor="customSwitch1">Include this event in a calendar</label>
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import boardService from '../../services/board-service';
+import { withAuthConsumer } from '../../contexts/AuthStore';
 class DeleteColumn extends Component {
   state = {
     show: false
@@ -25,10 +26,11 @@ class DeleteColumn extends Component {
   render() {
     return(
       <div className="mx-auto">
+        {this.props.user.role === "teacher" &&
         <Button variant="link" className="text-black-50 mt-3" onClick={this.handleShow} >
           Delete column
         </Button>
-
+        }
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Delete Column</Modal.Title>
@@ -47,4 +49,4 @@ class DeleteColumn extends Component {
   }
 }
 
-export default DeleteColumn;
+export default withAuthConsumer (DeleteColumn);

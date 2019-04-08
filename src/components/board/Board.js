@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import boardService from '../../services/board-service';
-import { Button } from 'react-bootstrap';
 import Column from './Column';
 import CreateColumn from './CreateColumn';
 

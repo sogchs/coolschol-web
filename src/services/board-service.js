@@ -9,8 +9,15 @@ const deleteColumn = (id) => http.delete(`/column/${id}`);
 
 const createCard = (card) => {
   const data = new FormData();
+
   Object.keys(card).forEach(key => {
-    data.append(key, card[key]);
+    if (card[key] instanceof Array) {
+      card[key].forEach(el => {
+        data.append(key, el);
+      })
+    } else {
+      data.append(key, card[key]);
+    }
   })
 
   return http.post('/card', data);
