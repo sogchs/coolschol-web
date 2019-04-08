@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import imagesAvatar from '../../data/imagesAvatar';
+import imagesTeacher from '../../data/imagesTeacher';
+import { Button, Collapse } from 'react-bootstrap';
 
 
 
-const avatar = Object.values(imagesAvatar)
+
+const avatar = Object.values(imagesAvatar) 
+const teacherImage = Object.values(imagesTeacher)
 
 const validations = {
   name: (value) => {
@@ -28,14 +32,15 @@ class Profile extends Component {
   state = {
     user: {
       name: this.props.user.name,
-      surname: this.props.user.name,
+      surname: this.props.user.surname,
       imageURL: this.props.user.imageURL
     },
     errors: {
       name: validations.name(),
       surname: validations.surname()
     },
-    touch: {}
+    touch: {},
+    selector:false
   }
 
   
@@ -68,11 +73,21 @@ class Profile extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    authService.editProfile(this.state.user, this.props.user.id)
+    .then(this.handleLogout())
     
   }
 
+  handleLogout = () => {
+    authService.logout()
+      .then( () => {
+        this.props.onUserChanged({})
+        this.props.history.push('/login')
+      })
+  }
+
   handleSelectImage = (img) => {
-    
     this.setState({
       user: {
         ...this.state.user,
@@ -83,12 +98,12 @@ class Profile extends Component {
 
 
   render(){
-    const { user, errors, touch } = this.state;
-
+    const { user, errors, touch, selector } = this.state;
+    const name = this.props.user.name
     return(
-      <div className="login shadow-sm">
+      <div className="profile shadow-sm">
         <div className="login-body">
-          <p>Hi {user.name}, you can change your profile information except your email</p>
+          <p>Hi {name}, you can change your profile information except your email</p>
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="nameRegister">Name</label>
@@ -116,25 +131,55 @@ class Profile extends Component {
                   />
                   <div className="invalid-feedback">{errors.surname}</div>
               </div>
-              <p>Meter aqui el img de origen y un collapse</p>
-              <div className="row p-2">
-                {avatar.map((img, index) => 
-                <div key={index} 
-                  onClick={() => this.handleSelectImage(img)}
-                  className={`student 
-                    ${user.imageURL.includes(img) && 'student-selected'}`}
-                  >
-                  <img src={img} alt="avatar" className="image-profile"/>
-                </div>
-                )}
-              </div>
-              
-              
 
-              
+              <div>
+                <img src={user.imageURL} alt="profile" className="image-profile"/>
+                <Button
+                  onClick={() => this.setState({ selector: !selector })}
+                  aria-controls="collapse-pay"
+                  aria-expanded={selector}
+                  variant="outline-secondary"
+                >
+                  Select other image
+                </Button>
+                {this.props.user.role === "student" &&
+                <Collapse in={selector}>
+                  <div id="collapse-attach">
+                    <div className="row p-2">
+                      {avatar.map((img, index) => 
+                      <div key={index} 
+                        onClick={() => this.handleSelectImage(img)}
+                        className={`student 
+                          ${user.imageURL.includes(img) && 'student-selected'}`}
+                        >
+                        <img src={img} alt="avatar" className="image-avatar-selector"/>
+                      </div>
+                      )}
+                    </div>
+                  </div>
+                      </Collapse> }
+                
+                {this.props.user.role === "teacher" &&
+                <Collapse in={selector}>
+                  <div id="collapse-attach">
+                    <div className="row p-2">
+                      {teacherImage.map((img, index) => 
+                      <div key={index} 
+                        onClick={() => this.handleSelectImage(img)}
+                        className={`student 
+                          ${user.imageURL.includes(img) && 'student-selected'}`}
+                        >
+                        <img src={img} alt="avatar" className="image-teacher-selector"/>
+                      </div>
+                      )}
+                    </div>
+                  </div>
+                      </Collapse> }
+              </div>
+                
                 <button type="submit" className="btn btn-info w-100 mt-3">Save changes</button>
+                <small className="mb-0 text-info">For the new changes to take effect, the application will restart, and you need to log in</small>
             </form>
-            
         </div>
       </div>
     )
