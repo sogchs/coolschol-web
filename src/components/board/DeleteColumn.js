@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import boardService from '../../services/board-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 class DeleteColumn extends Component {
@@ -36,7 +36,7 @@ class DeleteColumn extends Component {
             <Modal.Title>Delete Column</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Are you sure? If you remove this column, the cards removes too
+            Are you sure? If you delete this column, the cards will be deleted too
           </Modal.Body>
           <Modal.Footer>
             <Button variant="danger" onClick={this.deleteColumn}>

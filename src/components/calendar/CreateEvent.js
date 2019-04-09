@@ -118,7 +118,7 @@ class CreateEvent extends Component {
                 checked={event.role === "classroom"}
                 onChange={this.changeRoleClassroom}
                 />
-                <label className="form-check-label" htmlFor="roleRegister">Just this classroom</label>
+                <label className="form-check-label" htmlFor="roleRegister">Just for this classroom</label>
               </div>
               <div className="form-check form-check-inline">
                 <input className={`form-check-input ${touch.role && errors.role && 'custom-control-input'}`} 
@@ -132,26 +132,26 @@ class CreateEvent extends Component {
                 <label className="form-check-label" htmlFor="roleEvent2">All school</label>
                 <div className="invalid-feedback">{errors.role}</div>
               </div>
-
+              
               <div id="collapse-date">
                 <div className="m-2">
                   <div className="mt-3">
-                    <label htmlFor="dateStart" className="col-form-label">Start</label>
-                    <input type="date" className="ml-3" id="dateStart"
+                    <input type="date" className="" id="dateStart"
                     name="start" 
                     step="1" 
                     value={event.start}
                     onChange={this.handleChange}
                     />
+                    <label htmlFor="dateStart" className="col-form-label ml-2">Start</label>
                   </div>
                   <div className="mt-3">
-                    <label htmlFor="dateEnd" className="col-form-label">End</label>
-                    <input className="ml-3" type="date" id="dateEnd"
+                    <input className="" type="date" id="dateEnd"
                     step="1"
                     name="end" 
                     value={event.end}
                     onChange={this.handleChange}
                     />
+                    <label htmlFor="dateEnd" className="col-form-label ml-2">End</label>
                   </div>
                 </div>
               </div>

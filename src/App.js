@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './guards/PrivateRoute';
 
 import './App.css';
-import { NavBar, FooterNav} from './components/misc';
+import { NavBar } from './components/misc';
 import { Login, Register } from './components/auth';
 import Home from './components/home/Home';
 import Classroom from './components/classroom/Classroom';
@@ -28,11 +28,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/home" component={() => <NavBar back={false}/>}/>
           <NavBar/>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/home" component={() => <FooterNav app={false}/>}/>
-          <FooterNav/>
         </Switch>
 
         <Switch>

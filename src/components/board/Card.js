@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import boardService from '../../services/board-service'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 
@@ -25,7 +25,7 @@ class Card extends Component {
     const { show } = this.state;
 
     const date = this.props.createdAt.slice(0, 10)
-    const images = this.props.attachURLS
+    //const images = this.props.attachURLS
 
     return(
       

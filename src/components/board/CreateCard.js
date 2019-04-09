@@ -108,7 +108,7 @@ class CreateCard extends Component {
 
 render(){
   
-    const isError = Object.values(this.state.errors).some(error => error);
+    //const isError = Object.values(this.state.errors).some(error => error);
     const { card, errors, touch, show, date, pay, attach, addEvent } = this.state;
 
     return (

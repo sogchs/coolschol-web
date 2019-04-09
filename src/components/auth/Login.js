@@ -118,21 +118,21 @@ class Login extends Component {
               <div className="invalid-feedback">{errors.email}</div>
             </div>
             <div className="form-group">
-              <label htmlFor="passwordLogin">Contraseña</label>
+              <label htmlFor="passwordLogin">Password</label>
               <input type="password" 
                 className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
                 name="password"
                 id="passwordLogin" 
-                placeholder="Contraseña"
+                placeholder="Password"
                 onChange={this.handleChange}
                 value={user.password}
                 onBlur={this.handleBlur}
                 />
               <div className="invalid-feedback">{errors.password}</div>
             </div>
-            <button type="submit" className="btn btn-info w-100" disabled={!this.isValid()}>Entrar</button>
+            <button type="submit" className="btn btn-info w-100" disabled={!this.isValid()}>Login</button>
           </form>
-          <p className="mx-auto mt-4">Si no tienes cuenta <Link to='/register'> REGISTRATE </Link></p>
+          <p className="mx-auto mt-4">If you don´t have an account <Link to='/register'> REGISTER </Link></p>
         </div>
       </div>
     )

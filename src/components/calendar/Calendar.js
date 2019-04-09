@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import calendarService from '../../services/calendar-service';
+import  'fullcalendar/dist/fullcalendar.min.css';
 
 import FullCalendar from 'fullcalendar-reactwrapper';
-import corePlugin from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
-
 
 import CreateEvent from './CreateEvent';
 import EditEvent from './EditEvent';

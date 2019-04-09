@@ -49,7 +49,7 @@ class DeleteClassroom extends Component {
           <Modal.Body>
             <Form>
               <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Select the classroom for delete</Form.Label>
+                <Form.Label>Select the classroom to delete it</Form.Label>
                 <Form.Control as="select" className="w-75" name="classroomId" onChange={this.handleChange}>
                 <option readOnly>Select..</option>
                 {this.props.listClassrooms.map(classroom => (

@@ -226,7 +226,7 @@ class Register extends Component {
               
                 <button type="submit" className="btn btn-info w-100 mt-3">Register</button>
             </form>
-            <p className="mx-auto mt-4">Si ya tienes cuenta <Link to='/login'> ENTRA </Link>en tu espacio</p>        
+            <p className="mx-auto mt-4">If you are "cool" <Link to='/login'> LOGIN </Link></p>        
         </div>
       </div>
     )

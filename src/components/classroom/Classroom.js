@@ -67,7 +67,9 @@ class Classroom extends Component {
   )}
 
   componentDidMount(){
+
     this.updateStudentByChecklist()
+    
   }
 
 

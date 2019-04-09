@@ -529,74 +529,39 @@
   }
 
   /* *********** NAVS ************ */
-  .nav-footer{
-    position: fixed;
-    bottom: -1px;
-    width: -webkit-fill-available;
-    padding: 2px;
-    display: flex;
-    justify-content: space-around;
+  .menu-generalBtn{
+    font-size: 1.3em;
   }
-
-  .btn-nav-footer{
-    color:whitesmoke;
-    margin: 8px;
-  }
-  .btn-nav-footer-v{
-    color: rgb(41, 41, 41);
-    margin: 16px 0px;
-  }
-  .dropdown-toggle::after {
-    display:none !important;
-}
-  .dropdown-menu{
-    height: fit-content;
-  }
-
-  /* .icon-ajustes:before{
-    font-size: 1.22em;
-  } */
   
-  .btn-nav-footer p{
-    margin: 0;
-    font-weight: 100;
-    font-size: 0.6em;
-  }
-  .dropdown-menu.show {
-    bottom: 100%;
-    top: -10px !important;
-    margin-bottom: 12px !important;
-    margin-left: -17px !important;
-    width: -webkit-fill-available;
-  }
-  .setting-btn{
-    margin-left: 4px !important;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 3rem;
-    padding: .5rem 0;
-    margin: 0 -13 0 0;
-    text-align: right;
-    list-style: none;
-    background-color:  white;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 2rem;
-    box-shadow: 1px 1px 5px rgb(99, 99, 99);
-  }
-
-  .nav-coll{
+  .menu-container{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    padding: 1em;
   }
+  .menu-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .menu-apps{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  
+  .title-menu{
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: rgb(30, 163, 183);
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+  .menu-container a{
+    color: rgb(60, 60, 60);
+    margin: 8px;
+    font-size: 1.2em;
+    text-decoration-line: none !important;
+  }
+  
   .nav-coll i {
     width: 30px;
   }
@@ -753,10 +718,14 @@
 
 .write{
   padding: 0 12px;
+  padding: 0 12px;
+  bottom: 0;
+  position: absolute;
+  width: -webkit-fill-available;
 }
 
 .conversation{
-  height: 403px;
+  height: auto;
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
@@ -1142,27 +1111,7 @@
 /* ******** FOOTER NAV NEW ************** */
 
 
-.container-footerNav{
-  position: fixed;
-  bottom: -1px;
-  width: -webkit-fill-available;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-end;
-  padding: 6px;
-  background-color: rgb(0, 0, 0);
-  height: 69px;
-  z-index: 2;
-}
-.btns-footerNav{
-  color:whitesmoke !important;
-}
-.btns-set{
-  color:rgb(77, 77, 77) !important;
-  margin-bottom: 15px !important;
-  background-color: whitesmoke;
-}
+
 }
 
 
