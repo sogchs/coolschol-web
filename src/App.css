@@ -513,6 +513,21 @@
     font-size: 0.9em;
   }
 
+  .container-editClassroom{
+    padding: 15px;
+    margin-top: 20px;
+  }
+  .container-editClassroom h1{
+    font-size: 1.5em;
+    font-weight: 200;
+  }
+
+  .btn-editClassroom{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
   /* *********** NAVS ************ */
   .nav-footer{
     position: fixed;

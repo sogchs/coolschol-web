@@ -33,6 +33,9 @@ const listScore = (id) => http.get(`/classroom/score/${id}`)
 const listChecklist = (id) => http.get(`/classroom/checklist-detail/${id}`)
 .then(response => response.data);
 
+const editTotalClassroom = (id, data) => http.put(`/classroom/edit/${id}`, data)
+  .then(response => response.data);
+
 export default {
   createClassroom,
   listClassroom,
@@ -45,5 +48,6 @@ export default {
   getChecklist,
   detailStudent,
   listScore,
-  listChecklist
+  listChecklist,
+  editTotalClassroom
 }
