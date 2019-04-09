@@ -26,10 +26,15 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/home" component={() => <NavBar back={false}/>}/><NavBar/>
+          <Route exact path="/home" component={() => <NavBar back={false}/>}/>
+          <NavBar/>
         </Switch>
-       
-       <FooterNav />
+
+        <Switch>
+          <Route exact path="/home" component={() => <FooterNav app={false}/>}/>
+          <FooterNav/>
+        </Switch>
+
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

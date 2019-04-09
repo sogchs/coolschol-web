@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import authService from '../../services/auth-service';
 import { withAuthConsumer } from '../../contexts/AuthStore';
-import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
+
+import {FloatingMenu, MainButton, ChildButton,} from 'react-floating-button-menu';
 
 class FooterNav extends Component {
+
+  state={
+    isOpenSet: false,
+    isOpenApps: false,
+    redirect: null
+  }
 
   handleLogout = () => {
     authService.logout()
@@ -14,53 +21,136 @@ class FooterNav extends Component {
       })
   }
 
+  handleClickClassroom = () => {this.setState({ redirect: "/classroom" })}
+  handleClickTimer = () => {this.setState({ redirect: "/timer" })}
+  handleClickGroups = () => {this.setState({ redirect: "/groups" })}
+  handleClickChat = () => {this.setState({ redirect: "/chat" })}
+  handleClickBoard = () => {this.setState({ redirect: "/board" })}
+  handleClickCalendar = () => {this.setState({ redirect: "/calendar" })}
+  handleClickStudent = () => {this.setState({ redirect: "/student" })}
+  handleClickProfile = () => {this.setState({ redirect: "/classroom" })}
+  handleClickClassroomEdit = () => {this.setState({ redirect: "/classroom-edit" })}
+  
+  
 
   render() {
 
-    const { user, isAuthenticated, isAdmin} = this.props;
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
 
+    
     return(
-      <nav className="nav-footer navbar navbar-dark bg-dark">
-      {this.props.apps !== false &&
-        <Link className="btn-nav-footer" to="/classroom">
-          <span className="icon-home-chip"></span>
-        </Link>
-      }
-      {this.props.apps !== false &&
-        <ButtonToolbar>
-          <DropdownButton
-            drop="up"
-            bsPrefix="btn-nav-footer"
-            id="dropdown-button-apps"
-            key="up"
-            title={<span className="icon-apps"></span>}
-          >
-            <Dropdown.Item eventKey="1" className="btn-nav-footer-v"><span className="icon-conversation"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="2" className="btn-nav-footer-v"><span className="icon-tablon"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-calendario"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-grupos"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-sonometro"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="4" className="btn-nav-footer-v"><span className="icon-temporizador"></span></Dropdown.Item>
-          </DropdownButton>
-        </ButtonToolbar>
-      }
-        <ButtonToolbar>
-          <DropdownButton
-            drop="up"
-            bsPrefix="btn-nav-footer"
-            id="dropdown-button-settings"
-            key="up"
-            title={<span className="icon-ajustes"></span>}
-          >
-            {this.props.apps !== false &&
-            <Dropdown.Item eventKey="1" className="btn-nav-footer-v"><span className="icon-set-classroom"></span></Dropdown.Item>
-            }
-            <Dropdown.Item eventKey="2" className="btn-nav-footer-v"><span className="icon-set-profile"></span></Dropdown.Item>
-            <Dropdown.Item eventKey="3" className="btn-nav-footer-v"><span className="icon-log-out" onClick={this.handleLogout}></span></Dropdown.Item>
-          </DropdownButton>
-        </ButtonToolbar>
+      <div className="container-footerNav">
+      {this.props.app !== false &&
+      <>
 
-      </nav>
+        <MainButton
+            className="btns-footerNav"
+            iconResting={<span className="icon-home-chip"></span>}
+            iconActive={<span className="icon-home-chip"></span>}
+            iconColor="white"
+            backgroundColor="black"
+            size={56}
+            onClick={this.handleClickClassroom}
+          />
+        <FloatingMenu
+          slideSpeed={500}
+          direction="up"
+          isOpen={this.state.isOpenApps}
+        >
+          <MainButton
+            className="btns-footerNav"
+            iconResting={<span className="icon-apps"></span>}
+            iconActive={<span className="icon-apps"></span>}
+            iconColor="white"
+            backgroundColor="black"
+            size={56}
+            onClick={() => this.setState({ isOpenApps: !this.state.isOpenApps })}
+          />
+          
+          <ChildButton
+            className="btns-set"
+            icon={<span className="icon-temporizador"></span>}
+            href="./timer"
+            size={56}
+            onClick={this.handleClickTimer}
+            />
+          <ChildButton
+            className="btns-set"
+            icon={<span className="icon-grupos"></span>}
+            href="" 
+            size={56}
+            onClick={this.handleClickGroups}
+            />
+      
+          <ChildButton
+            className="btns-set"
+            icon={<span className="icon-conversation"></span>}
+            size={56}
+            />
+          <ChildButton
+            className="btns-set"
+            icon={<span className="icon-tablon"></span>}
+            href="" 
+            size={56}
+            />
+          <ChildButton
+            className="btns-set"
+            icon={<span className="icon-calendario"></span>}
+            href="" 
+            size={56}
+            />
+        </FloatingMenu>
+
+        <FloatingMenu
+        slideSpeed={500}
+        direction="up"
+        isOpen={this.state.isOpenSet}
+      >
+        <MainButton
+          className="btns-footerNav"
+          iconResting={<span className="icon-ajustes"></span>}
+          iconActive={<span className="icon-ajustes"></span>}
+          iconColor="white"
+          backgroundColor="black"
+          size={56}
+          onClick={() => this.setState({ isOpenSet: !this.state.isOpenSet })}
+        />
+        <ChildButton
+          className="btns-set"
+          icon={<span className="icon-log-out"></span>}
+          href="" 
+          size={56}
+          />
+        <ChildButton
+          className="btns-set"
+          icon={<span className="icon-set-profile"></span>}
+          href="" 
+          size={56}
+          />
+        <ChildButton
+          className="btns-set"
+          icon={<span className="icon-set-classroom"></span>}
+          href="" 
+          size={56}
+          />
+        
+      </FloatingMenu>
+      </>
+      }
+      {this.props.app === false &&
+      <MainButton
+            className="btns-footerNav"
+            iconResting={<span className="icon-log-out"></span>}
+            iconActive={<span className="icon-log-out"></span>}
+            iconColor="white"
+            backgroundColor="black"
+            size={56}
+            onClick={() => this.handleLogout()}
+          />}
+    </div>
+
     )
   }
 }

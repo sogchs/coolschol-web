@@ -553,9 +553,9 @@
     height: fit-content;
   }
 
-  .icon-ajustes:before{
+  /* .icon-ajustes:before{
     font-size: 1.22em;
-  }
+  } */
   
   .btn-nav-footer p{
     margin: 0;
@@ -1137,6 +1137,31 @@
   width: auto;
   height: 50px;
   margin-right: 30px;
+}
+
+/* ******** FOOTER NAV NEW ************** */
+
+
+.container-footerNav{
+  position: fixed;
+  bottom: -1px;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 6px;
+  background-color: rgb(0, 0, 0);
+  height: 69px;
+  z-index: 2;
+}
+.btns-footerNav{
+  color:whitesmoke !important;
+}
+.btns-set{
+  color:rgb(77, 77, 77) !important;
+  margin-bottom: 15px !important;
+  background-color: whitesmoke;
 }
 }
 

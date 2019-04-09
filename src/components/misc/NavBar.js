@@ -7,6 +7,7 @@ class NavBar extends Component {
   render() {
 
     return(
+      
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
         <img className="logo" src={logoCoolSchool} alt="Logo coolSchool"/>
         <div>
