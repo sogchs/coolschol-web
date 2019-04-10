@@ -60,6 +60,11 @@ class DetailStudent extends Component {
 
   render() {
     const { student,hidden, disabled, score, checklist } = this.state
+
+    const totalScore = score.reduce((a, b) => 
+    (b.type == "positive") ? 
+      (a + b.scoreNumber) : (a - b.scoreNumber)
+, 0)
     
     return(
 
@@ -90,6 +95,7 @@ class DetailStudent extends Component {
           <div className="detail-body mt-4">
           <div className="detail-title-table">
               <h4 className="mt-2">Scores</h4>
+              <p className="detail-num">{totalScore}</p>
             </div>
             <Table responsive>
               <thead className="text-info">
