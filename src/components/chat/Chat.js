@@ -33,7 +33,7 @@ class Chat extends Component {
 
   listRead = () => {
     chatService.listRead(this.props.classroom.id, this.props.user.id)
-    .then(message => console.log(message))
+    .then(data => console.log(data))
   }
 
   componentDidMount(){
@@ -55,6 +55,7 @@ class Chat extends Component {
     
     return(
       <div>
+        {this.props.user.role === "teacher" &&
           <div className="inbox" hidden={this.state.showInbox}>
           {this.state.users.map(user => (
             <Button 
@@ -68,7 +69,24 @@ class Chat extends Component {
             </div> 
             </Button>
           ))}
-          </div>
+          </div>}
+
+          {this.props.user.role === "student" && 
+            <div className="inbox" hidden={this.state.showInbox}>
+            {this.props.classroom.teachers.map(user => (
+              <Button 
+                className="btn inbox-btn" 
+                key={user.id} 
+                onClick={() => this.listMessages(user)}
+              >
+              <div className="d-flex flex-row align-items-center">
+                <img className="inbox-btn-img" src={user.imageURL} alt="user-avatar"/>
+                <p className="mb-0 ml-3">{user.name} {user.surname}</p>
+              </div> 
+              </Button>
+            ))}
+            </div>
+          }
           <div className="" hidden={this.state.showConversation}>
             <Conversation 
             {...this.state.selected} 

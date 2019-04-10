@@ -102,7 +102,7 @@ class AddStudent extends Component {
     const { errors, students, user, touch } = this.state
     return(
       <>
-        <Button variant="outline-info ml-3 btn-add-student" onClick={this.handleShow}>
+        <Button variant="outline-info ml-2 btn-add-student" onClick={this.handleShow}>
           +
         </Button>
 

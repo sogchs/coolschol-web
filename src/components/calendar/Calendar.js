@@ -56,9 +56,10 @@ class Calendar extends Component {
         eventLimit= {true} // allow "more" link when too many events
         events = {this.state.events}	
         />
+        {this.props.user.role === "teacher" && 
         <div className="d-flex justify-content-center mt-3">
           <CreateEvent fetchEvents={this.fetchEvents}/>
-        </div>
+        </div>}
 
         <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
@@ -67,12 +68,13 @@ class Calendar extends Component {
             <Modal.Body>
             <h5>{this.state.eventSelected.title}</h5>
             <p>Date: {this.state.eventSelected.start} to {this.state.eventSelected.end}</p>
-            <p>Show for: {this.state.eventSelected.role}</p>
+            <p className="text-info">Show for: {this.state.eventSelected.role}</p>
             </Modal.Body>
+            {this.props.user.role === "teacher" && 
               <Modal.Footer>
                 <EditEvent {...this.state.eventSelected} fetchEvents={this.fetchEvents}/>
                 <Button variant="outline-danger" onClick={this.createEvent}>Delete</Button>
-              </Modal.Footer>
+              </Modal.Footer>}
           </Modal>
       </div>
     )

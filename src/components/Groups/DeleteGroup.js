@@ -34,7 +34,7 @@ class DeleteGroup extends Component {
             <Modal.Title>Delete Group</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Are you sure? This groups are very nice!
+            Are you sure? These groups are very nice!
           </Modal.Body>
           <Modal.Footer>
             <Button variant="danger" onClick={this.deleteGroup}>

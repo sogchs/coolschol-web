@@ -30,6 +30,7 @@ class Home extends Component {
     
     return(
       <div>
+        {this.props.user.role === "teacher" && 
         <div className="classroom">
           {this.state.classrooms.map(classroom => (
             <Link 
@@ -45,9 +46,22 @@ class Home extends Component {
               </div>
             </Link>
           ))}
-          <NewClassroom fetchClassrooms={this.fetchClassrooms}/>
-          <DeleteClassroom listClassrooms={this.state.classrooms} fetchClassrooms={this.fetchClassrooms}/>
-        </div>
+            <NewClassroom fetchClassrooms={this.fetchClassrooms}/>
+            <DeleteClassroom listClassrooms={this.state.classrooms} fetchClassrooms={this.fetchClassrooms}/>
+        </div>}
+        {this.props.user.role === "student" && 
+        <div className="classroom">
+          {this.state.classrooms.map(classroom => (
+            <Link 
+              className="btn btn-info classroom-btn" 
+              key={classroom.id} 
+              to="/main"
+              onClick={() => this.props.onClassroomChanged(classroom)}
+              >
+              <h5 className="mb-0">{classroom.title}</h5>
+            </Link>
+          ))}
+        </div>}
       </div>
     )
   }

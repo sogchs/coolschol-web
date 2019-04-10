@@ -65,15 +65,19 @@ class MenuSmartPhone extends Component {
                 <Link to="/calendar" onClick={() => this.setState({ openLeft: false })}><span className="icon-calendario"></span></Link>
                 <Link to="/board" onClick={() => this.setState({ openLeft: false })}><span className="icon-tablon"></span></Link>
                 <Link to="/chat" onClick={() => this.setState({ openLeft: false })}><span className="icon-conversation"></span></Link>
+                {this.props.user.role === "teacher" &&
+                <>
                 <Link to="/groups" onClick={() => this.setState({ openLeft: false })}><span className="icon-grupos"></span></Link>
                 <Link to="/timer" onClick={() => this.setState({ openLeft: false })}><span className="icon-temporizador"></span></Link>
+                </>}
               </div>
               <h3 className="title-menu mt-5">SET</h3>
               <div className="menu-apps">
-                <Link to="/classroom-edit" onClick={() => this.setState({ openLeft: false })}><span className="icon-set-classroom"></span></Link>
+              {this.props.user.role === "teacher" &&
+                <Link to="/classroom-edit" onClick={() => this.setState({ openLeft: false })}><span className="icon-set-classroom"></span></Link>}
                 <Link to="/profile" onClick={() => this.setState({ openLeft: false })}><span className="icon-set-profile"></span></Link>
-                <button  className="text-info mt-4" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></button>
               </div>
+              <button  className="text-info btn-logout-menu" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></button>
             </div>
           </Drawer>
         </div>

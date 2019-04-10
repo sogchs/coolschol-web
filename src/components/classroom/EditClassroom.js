@@ -103,6 +103,7 @@ class EditClassroom extends Component{
     }
     return(
       <div className="container-editClassroom">
+        <img className="coolito-set" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito2.png" alt="coolito-set"/>
         <h1>Edit your classroom "{this.props.classroom.title}"</h1>
         
         <div className="mt-4">

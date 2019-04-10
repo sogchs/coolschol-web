@@ -16,6 +16,7 @@ import Timer from './components/timer/Timer';
 import DetailStudent from './components/classroom/DetailStudent';
 import Profile from './components/auth/Profile';
 import EditClassroom from './components/classroom/EditClassroom';
+import Student from './components/student/Student';
 
 
 
@@ -37,15 +38,13 @@ class App extends Component {
           <Route exact path="/board" component={Board} />
           <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/groups" component={Groups} />
+          <PrivateRoute exact path="/groups" role={"teacher"} component={Groups} />
           <Route exact path="/timer" component={Timer} />
           <Route exact path="/student" component={DetailStudent} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/classroom-edit" component={EditClassroom} />
+          <PrivateRoute exact path="/classroom-edit" role={"teacher"} component={EditClassroom} />
+          <PrivateRoute exact path="/main" role={"student"} component={Student} />
           <PrivateRoute exact path="/classroom" role={"teacher"} component={Classroom} />
-
-          {/* <PrivateRoute exact path="/" role={"Student"} component={} />
-          <Redirect to="/not-found"/> */}
         </Switch>
       </div>
     );

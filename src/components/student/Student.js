@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import classroomService from '../../services/classroom-service';
-import { Form, Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 
 
 
-class DetailStudent extends Component {
+class Student extends Component {
   state = {
-    studentSelected: '',
+    studentSelected: this.props.user.id,
     student: {},
-    hidden: true,
-    disabled: true,
     score: [],
     checklist: [],
     pos:''
@@ -36,30 +34,11 @@ class DetailStudent extends Component {
   }
 
   componentDidMount(){
-
-  }
-
-  handleChange = (event) => {
-
-    const { value } = event.target;
-
-    this.setState({ 
-      studentSelected: value,
-      disabled: false
-    })
-  }
-
-
-  handleSubmit = (event) => {
-    event.preventDefault();
     this.getStudent()
   }
 
-
-
-
   render() {
-    const { student,hidden, disabled, score, checklist } = this.state
+    const { student, score, checklist } = this.state
 
     const totalScore = score.reduce((a, b) => 
     (b.type === "positive") ? (a + b.scoreNumber) : (a - b.scoreNumber), 0)
@@ -67,21 +46,8 @@ class DetailStudent extends Component {
     return(
 
       <div className="container-detail">
-       <Form.Group className="form-detail">
-          <Form.Label className="text-secondary">Select a student</Form.Label>
-          <div className="form-detail-items">
-            <Form.Control as="select" onChange={this.handleChange} className="select-detail">
-              <option>Select one ...</option>
-              {this.props.classroom.students.map(student => 
-                <option key={student.id} value={student.id} name="student">{student.name} {student.surname}</option>
-                )}
-                
-            </Form.Control>
-            <Button onClick={this.handleSubmit} variant="outline-info ml-2" disabled={disabled}><i className="far fa-eye"></i></Button>
-          </div>
-         
-        </Form.Group>
-        <div className="detail-student-container" hidden={hidden}>
+
+        <div className="detail-student-container">
           <div className="detail-header">
             <img src={student.imageURL} alt="student-avatar" className="detail-img"/>
             <div className="detail-header-text">
@@ -141,4 +107,4 @@ class DetailStudent extends Component {
   }
 }
 
-export default withAuthConsumer(DetailStudent);
+export default withAuthConsumer(Student);

@@ -100,7 +100,10 @@ class Login extends Component {
       return (<Redirect to='./home' />)
     }
     return(
+      <>
+      <img className="coolito-login" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito6.png" alt=""/>
       <div className="login shadow-sm">
+      
         <div className="login-body">
           <img className="w-75 mx-auto my-3" src={logoCoolSchool} alt=""/>
           <form onSubmit={this.handleSubmit}>
@@ -114,6 +117,7 @@ class Login extends Component {
                 onChange={this.handleChange}
                 value={user.email}
                 onBlur={this.handleBlur}
+                autoComplete="off"
                 />
               <div className="invalid-feedback">{errors.email}</div>
             </div>
@@ -127,6 +131,7 @@ class Login extends Component {
                 onChange={this.handleChange}
                 value={user.password}
                 onBlur={this.handleBlur}
+                autoComplete="off"
                 />
               <div className="invalid-feedback">{errors.password}</div>
             </div>
@@ -135,6 +140,7 @@ class Login extends Component {
           <p className="mx-auto mt-4">If you don´t have an account <Link to='/register'> REGISTER </Link></p>
         </div>
       </div>
+      </>
     )
   }
 }

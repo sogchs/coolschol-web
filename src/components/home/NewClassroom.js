@@ -68,7 +68,11 @@ class NewClassroom extends Component {
 
           <Modal show={show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Create a new Classroom</Modal.Title>
+              <div className="header-newclassroom">
+                <Modal.Title className="title-newclassroom">Create a new Classroom</Modal.Title>
+                <img className="coolito-newclassroom" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito1.png" alt="coolito-newclassroom" />
+              </div>
+              
             </Modal.Header>
             <Modal.Body>
               <form onSubmit={this.createClassroom}>

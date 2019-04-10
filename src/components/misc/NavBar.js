@@ -19,7 +19,10 @@ class NavBar extends Component {
           {this.props.back !== false &&
           <div>
             <Link to="/home"><span className="fas fa-arrow-left mr-2 text-secondary"></span></Link>
-            <Link className="navbar-text mr-3" to="/classroom">{this.props.classroom.title}</Link>
+            {this.props.user.role === "teacher" &&
+            <Link className="navbar-text mr-3" to="/classroom">{this.props.classroom.title}</Link>}
+            {this.props.user.role === "student" &&
+            <Link className="navbar-text mr-3" to="/main">{this.props.classroom.title}</Link>}
           </div>
           }
           <MenuSmartPhone back={this.props.back}/>

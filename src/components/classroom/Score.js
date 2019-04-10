@@ -94,13 +94,17 @@ class Score extends Component {
         const { score, selector, button } = this.state
         return (
             <>
-                <Button variant="secondary"  onClick={this.handleShow}>
+                <Button variant="secondary"  onClick={this.handleShow} disabled={this.props.button}>
                     Score
                 </Button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Score round</Modal.Title>
+                        <div className="header-score">
+                            <Modal.Title className="title-score">Score round</Modal.Title>
+                        <img className="coolito-score" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito4.png" alt="coolito-score"/>
+                        </div>
+                        
                     </Modal.Header>
                     <Modal.Body>
                     <div className="form-check d-flex justify-content-around">

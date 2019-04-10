@@ -132,7 +132,11 @@ class NewGroup extends Component {
 
           <Modal show={show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Create a new Group</Modal.Title>
+              <div className="header-groups">
+                <Modal.Title className="title-groups">Create a new Group</Modal.Title>
+                <img className="coolito-groups" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito3.png" alt="coolito-goups"/>
+              </div>
+              
             </Modal.Header>
             <Modal.Body>
               <form>

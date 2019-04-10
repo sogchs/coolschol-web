@@ -12,11 +12,12 @@ import { Link } from 'react-router-dom';
 class Classroom extends Component {
   state = {
     studentsSelect: [],
-    nonAttendance:[]
+    nonAttendance:[],
+    //button: true
   }
 
   handleSelectStudent = (student) => {
-    const containStudent = this.state.studentsSelect.includes(student)
+   const containStudent = this.state.studentsSelect.includes(student)
     if(containStudent){
       const removeStudent = () => {
         return this.state.studentsSelect.filter( e => e !== student );};
@@ -28,9 +29,12 @@ class Classroom extends Component {
         studentsSelect: [
           ...this.state.studentsSelect,
           student
-        ]    
+        ],
+        button: false
       })
     }
+
+   
   }
 
 
@@ -50,7 +54,7 @@ class Classroom extends Component {
     this.setState({ studentsSelect:[]})
     const randomStudent = this.props.classroom.students.length;
     const selected = Math.floor(Math.random()*randomStudent);
-    console.log(this.props.classroom.students[selected]);
+    //console.log(this.props.classroom.students[selected]);
     this.setState({
         studentsSelect: [
           this.props.classroom.students[selected]
@@ -74,6 +78,10 @@ class Classroom extends Component {
 
 
   render() {
+    const longStudent = this.state.studentsSelect.length
+    // if(longStudent === 0){
+    //    this.setState({ button: true })
+    // }
     
     return(
       <div>
@@ -91,6 +99,7 @@ class Classroom extends Component {
             <Score 
             studentSelected={this.state.studentsSelect}
             deselectAll={this.handleDeselectAll}
+            button={this.state.button}
             />
             <Link className="btn btn-secondary"  to="/student">Detail</Link>
           </ButtonGroup>
