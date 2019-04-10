@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import logoCoolSchool from '../../logo-coolSchool.svg'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import MenuSmartPhone from './MenuSmartPhone';
 class NavBar extends Component {
 
   render() {
+    const { pathname } = this.props.history.location;
 
+    if ( pathname === '/login' || pathname === '/register') {
+      return null;
+    } else {
     return(
       
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -21,8 +25,8 @@ class NavBar extends Component {
           <MenuSmartPhone back={this.props.back}/>
         </div>
       </nav>
-    )
+    )}
   }
 }
 
-export default withAuthConsumer(NavBar)  ;
+export default withAuthConsumer(withRouter(NavBar))  ;

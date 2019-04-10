@@ -53,8 +53,9 @@ class DetailStudent extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.getStudent()
-    
   }
+
+
 
 
   render() {
@@ -89,7 +90,6 @@ class DetailStudent extends Component {
           <div className="detail-body mt-4">
           <div className="detail-title-table">
               <h4 className="mt-2">Scores</h4>
-              <p className="detail-num">{checklist.length}</p>
             </div>
             <Table responsive>
               <thead className="text-info">

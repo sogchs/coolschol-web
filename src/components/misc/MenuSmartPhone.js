@@ -48,7 +48,7 @@ class MenuSmartPhone extends Component {
     return(
     <>
     {this.props.back !== false &&
-      <div>
+      <div className="mt-2">
         <span className="menu-generalBtn"onClick={() =>this.setState({ openLeft: !openLeft })}><span className="icon-home-chip"></span></span>
         <div className="container-menu">
           <Drawer

@@ -108,7 +108,7 @@ class AddStudent extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add News Students</Modal.Title>
+            <Modal.Title>Add new Students</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <InputGroup className="mb-3">
