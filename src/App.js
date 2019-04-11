@@ -5,7 +5,8 @@ import PrivateRoute from './guards/PrivateRoute';
 import './App.css';
 import './AppFull.css';
 import { NavBar } from './components/misc';
-import { Login, Register } from './components/auth';
+import Register  from './components/auth/Register';
+import Login  from './components/auth/Login'
 import Home from './components/home/Home';
 import Classroom from './components/classroom/Classroom';
 import Board from './components/board/Board';
@@ -18,6 +19,7 @@ import DetailStudent from './components/classroom/DetailStudent';
 import Profile from './components/auth/Profile';
 import EditClassroom from './components/classroom/EditClassroom';
 import Student from './components/student/Student';
+import Index from './components/auth/Index';
 
 
 
@@ -33,6 +35,7 @@ class App extends Component {
         </Switch>
 
         <Switch>
+          <Route exact path="/" component={Index} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/home" component={Home} />

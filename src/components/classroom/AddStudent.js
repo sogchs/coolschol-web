@@ -58,15 +58,30 @@ class AddStudent extends Component {
 
     const userEmail = { ...this.state.user}
     classroomService.searchUserByEmail(userEmail)
-    .then(student => this.setState({ 
-      students: [
-        ...this.state.students,
-      student
-      ],
-      user: {
-        email: ''
-      }
-    }))
+    .then(
+      (student) => this.setState({ students: [ ...this.state.students, student], user:{email:''} }),
+      (error) => {
+        const { message, errors } = error.response.data;
+        this.setState({
+          errors: {
+            ...errors,
+            email: !errors && message
+          },
+          touch: {
+            ...errors,
+            email: !errors && message
+          }
+        })})
+
+    // .then(student =>  this.setState({ 
+    //   students: [
+    //     ...this.state.students,
+    //   student
+    //   ],
+    //   user: {
+    //     email: ''
+    //   }
+    // }))
   }
 
   addListStudents = (event) => {
@@ -89,7 +104,7 @@ class AddStudent extends Component {
 
 
   handleClose = () => {
-    this.setState({ show: false });
+    this.setState({ show: false, user: {email:''}, errors: { email:validations.email()}, students: [], touch: {} });
   }
 
   handleShow = () => {
@@ -120,13 +135,12 @@ class AddStudent extends Component {
                 onChange={this.handleChange}
                 onBlur={this.handleBlur}
               />
-              
-              <Form.Control.Feedback type="invalid">
-                {errors.email}
-              </Form.Control.Feedback>
               <InputGroup.Append>
                 <Button variant="outline-secondary" onClick={this.getStudent}>+ Add</Button>
               </InputGroup.Append>
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
             </InputGroup>
             <ol reversed>
               {students.map(student => (

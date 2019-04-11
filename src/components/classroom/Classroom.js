@@ -78,7 +78,7 @@ class Classroom extends Component {
 
 
   render() {
-    const longStudent = this.state.studentsSelect.length
+    //const longStudent = this.state.studentsSelect.length
     // if(longStudent === 0){
     //    this.setState({ button: true })
     // }

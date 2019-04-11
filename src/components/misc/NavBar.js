@@ -9,7 +9,7 @@ class NavBar extends Component {
   render() {
     const { pathname } = this.props.history.location;
 
-    if ( pathname === '/login' || pathname === '/register') {
+    if ( pathname === '/' || pathname === '/login' || pathname === '/register') {
       return null;
     } else {
     return(

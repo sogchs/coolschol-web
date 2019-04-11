@@ -84,10 +84,35 @@
 
 
 @media (max-width: 740px) {
-  .logo{
-      width: 10em;
-      margin: 8px 0;
-    }
+  /* ********** INDEX *********** */
+  .container-index{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 170px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    background-color: rgb(250, 250, 250);
+  }
+  .img-index{
+    width: 340px;
+  }
+
+  .container-index-links{
+    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+  }
+
+  .btn-index{
+    color: dimgrey;
+    font-size: 1.5em;
+    font-weight: 200;
+    text-decoration-line: none;
+  }
+
+  
   /* ********* CLASSROOM ************ */
   .btn-classroom-action{
     display: flex;
@@ -190,6 +215,10 @@
   }
 
   /* *********** NAVS ************ */
+  .logo{
+    width: 10em;
+    margin: 8px 0;
+  }
   .nav-container{
     display: none;
   }
@@ -818,6 +847,13 @@
   margin-right: 30px;
 }
 
+/* ************ MARK ************* */
+.input-mark-container{
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
 }
 
 
