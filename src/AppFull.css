@@ -1,92 +1,8 @@
-
-@font-face {
-  font-family: 'icomoon';
-  src:  url('./fonts/icomoon.eot?w37aoe');
-  src:  url('./fonts/icomoon.eot?w37aoe#iefix') format('embedded-opentype'),
-    url('./fonts/icomoon.ttf?w37aoe') format('truetype'),
-    url('./fonts/icomoon.woff?w37aoe') format('woff'),
-    url('./fonts/icomoon.svg?w37aoe#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  font-size: 1.8em;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-set-profile:before {
-  content: "\e90f";
-}
-.icon-set-classroom:before {
-  content: "\e910";
-}
-.icon-log-out:before {
-  content: "\e911";
-}
-.icon-test:before {
-  content: "\e90d";
-}
-.icon-evaluation:before {
-  content: "\e90e";
-}
-.icon-home-chip:before {
-  content: "\e90b";
-}
-.icon-home-factory:before {
-  content: "\e90c";
-}
-.icon-apps:before {
-  content: "\e909";
-}
-.icon-conversation:before {
-  content: "\e90a";
-}
-.icon-calendario:before {
-  content: "\e900";
-}
-.icon-aleatorio:before {
-  content: "\e901";
-}
-.icon-ajustes:before {
-  content: "\e902";
-}
-.icon-grupos:before {
-  content: "\e903";
-}
-.icon-cuestionario:before {
-  content: "\e904";
-}
-.icon-logo-coolScool:before {
-  content: "\e905";
-}
-.icon-temporizador:before {
-  content: "\e906";
-}
-.icon-tablon:before {
-  content: "\e907";
-}
-.icon-sonometro:before {
-  content: "\e908";
-}
-
-
-
-@media (max-width: 740px) {
+@media (min-width: 740px) {
   .logo{
-      width: 10em;
-      margin: 8px 0;
+    width: 10em;
+    margin: 8px 0;
+    margin-left: 50px;
     }
   /* ********* CLASSROOM ************ */
   .btn-classroom-action{
@@ -95,12 +11,12 @@
     margin-top: 20px;
   }
   .student {
-    zoom: 68%;
-    margin: 2px 2px;
+    zoom: 100%;
+    margin: 10px 7px;
     padding-top: 5px;
   }
   .board-students {
-    margin: 1em;
+    margin: 2em 4em;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -108,6 +24,7 @@
 
   .btn-add-student{
     height: fit-content;
+    margin-bottom: 10px;
   }
   
   .student-selected{
@@ -164,6 +81,8 @@
   .container-editClassroom{
     padding: 15px;
     margin-top: 20px;
+    width: 600px;
+    margin: 0 auto;
   }
   .container-editClassroom h1{
     font-size: 1.5em;
@@ -190,58 +109,59 @@
   }
 
   /* *********** NAVS ************ */
-  .nav-container{
+
+  .nav-menu{
     display: none;
   }
-  .menu-generalBtn{
-    font-size: 1.3em;
-  }
-  
-  .menu-container{
+
+  .nav-container{
     display: flex;
-    flex-direction: column;
-    padding: 1em;
-  }
-  .menu-container{
-    display: flex;
-    flex-direction: column;
-  }
-  .menu-apps{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-  
-  .title-menu{
-    font-size: 1.2rem;
-    font-weight: 100;
-    color: rgb(30, 163, 183);
-    margin: 0 auto;
-    margin-bottom: 8px;
-  }
-  .menu-container a{
-    color: rgb(60, 60, 60);
-    margin: 8px;
-    font-size: 1.2em;
-    text-decoration-line: none !important;
-  }
-  
-  .nav-coll i {
-    width: 30px;
-  }
-  .menu-classroom{
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .menu-classroom button{
-    margin-top: 10px;
-    font-size: 0.785rem;
+    width: 500px;
+    justify-content: space-around;
+    margin-left: 30px;
   }
 
-  .btn-logout-menu{
-    position: absolute;
-    margin-top: 527px;
-    margin-left: 10px;
+  .nav-container a{
+    color: dimgray;
+    text-decoration-line: none;
+  }
+
+  .container-nav-full{
+    margin-left: auto;
+    margin-right: 40px;
+  }
+
+  #dropdown-menu-align-right{
+    background-color: white!important;
+    border-color: white !important;
+    color: dimgray !important;
+    padding: 0 !important;
+  }
+
+  .dropdown-toggle::after{
+    display:  none !important;
+  }
+
+  .container-drop-set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .container-drop-set a{
+    margin-bottom: 20px;
+  }
+  .dropdown-menu{
+    min-width: 4em !important;
+    text-align: -webkit-right !important;
+    background-color: transparent !important;
+    border: none !important;
+    margin-top: 1em !important;
+  }
+  .btn-set-dropdown{
+    background-color: whitesmoke;
+    padding: 0.8em;
+    border-radius: 40px;
   }
 
   /* *************** LIST ************** */
@@ -298,10 +218,11 @@
 /* ************* BOARD ****************** */
 .container-columns{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 80px;
+  justify-content: center;
+  align-items: end;
 }
 
 .column-item{
@@ -312,6 +233,7 @@
   padding: 10px;
   border: 2px solid lightgrey;
   background-color: rgb(240, 240, 240);
+  margin-right: 10px;
 }
 .card-item {
   border-radius: 3px;
@@ -405,11 +327,11 @@
   padding: 0 12px;
   bottom: 0;
   position: absolute;
-  width: -webkit-fill-available;
+  width: 60%;
 }
 
 .conversation{
-  height: 447px;
+  height: auto;
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
@@ -443,6 +365,8 @@
   display: flex;
   flex-direction: column;
   padding: 30px;
+  align-items: center;
+  margin-top: 15px;
 }
 .inbox-btn{
   background-color: white;
@@ -456,6 +380,7 @@
   height: 50px;
   border-color: lightgrey;
   color: black;
+  width: 20%;
 }
 
 .inbox-btn-img{
@@ -471,9 +396,14 @@
   font-size: 1.7em;
 }
 
+.body-conversation{
+  margin: 0 auto;
+  width: 60%;
+}
+
 /* ******** LOGIN & REGISTER *********** */
 .login{
-  width: 90%;
+  width:500px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -482,19 +412,25 @@
   display: flex;
   margin-top: 150px;
 }
+.register{
+  margin-top: 40px !important;
+}
 
 .login-body{
   display: flex;
   flex-direction: column;
   width: -webkit-fill-available;
 }
-.register{
-  margin-top: 35px;
-}
+
 .coolito-login{
   height: 8em;
   position: fixed;
-  margin: -120px 0 0 103px;
+  margin: -124px 0 0 179px;
+}
+
+.slect-role-user{
+  display: flex;
+  justify-content: space-around;
 }
 
 /* ************* CLASSROOM ************* */
@@ -502,6 +438,8 @@
   display: flex;
     flex-direction: column;
     padding: 30px;
+    width: 600px;
+    margin: 0 auto;
 }
 
 .classroom-btn{
@@ -557,7 +495,8 @@
 }
  .coolito-set{
   height: 6em;
-  margin-left: 131px;
+  margin-left: 253px;
+  margin-top: 20px;
   margin-bottom: 10px;
  }
 /* ******** CALENDAR ******** */
@@ -568,9 +507,9 @@
   color: rgb(30, 163, 183);
 }
 
-.fc-day-grid-container{
+/* .fc-day-grid-container{
   height: 320px !important;
-}
+} */
 .fc-event{
   position: relative;
   display: block;
@@ -597,6 +536,20 @@
 }
 .fc-unthemed td.fc-today{
   background: aliceblue !important;
+}
+/* .fc-basic-view {
+  min-height: 4.7em !important;
+} */
+.fc-week{
+  height: 75px !important;
+}
+.fc-scroller{
+  overflow: hidden !important;
+  height: auto !important;
+}
+#calendar{
+  width: 80%;
+  margin: auto;
 }
 
 /* ************* GROUP *********** */
@@ -674,7 +627,8 @@
 }
 
 .btn-group-timer{
-  margin: 0 40px;
+  margin: 0 auto;
+  width: 30%;
 }
 
 .collapse-c{
@@ -724,6 +678,9 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  width: 600px;
+  margin: auto;
+  margin-top: 40px;
 }
 
 .form-detail{
@@ -790,7 +747,7 @@
 /* ******** PROFILE ******* */
 
 .profile{
-  width: 90%;
+  width: 600px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -798,7 +755,7 @@
   padding: 15px;
   display: -webkit-flex;
   display: flex;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 104px;
 }
 
@@ -819,7 +776,3 @@
 }
 
 }
-
-
-
-

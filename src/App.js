@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './guards/PrivateRoute';
 
 import './App.css';
+import './AppFull.css';
 import { NavBar } from './components/misc';
 import { Login, Register } from './components/auth';
 import Home from './components/home/Home';

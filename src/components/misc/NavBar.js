@@ -3,6 +3,7 @@ import logoCoolSchool from '../../logo-coolSchool.svg'
 import { Link, withRouter } from 'react-router-dom'
 import { withAuthConsumer } from '../../contexts/AuthStore';
 import MenuSmartPhone from './MenuSmartPhone';
+import MenuFullScreen from './MenuFullScreen';
 class NavBar extends Component {
 
   render() {
@@ -15,7 +16,7 @@ class NavBar extends Component {
       
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
         <img className="logo" src={logoCoolSchool} alt="Logo coolSchool"/>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center container-nav-full">
           {this.props.back !== false &&
           <div>
             <Link to="/home"><span className="fas fa-arrow-left mr-2 text-secondary"></span></Link>
@@ -26,6 +27,7 @@ class NavBar extends Component {
           </div>
           }
           <MenuSmartPhone back={this.props.back}/>
+          <MenuFullScreen back={this.props.back}/>
         </div>
       </nav>
     )}

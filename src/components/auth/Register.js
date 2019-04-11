@@ -144,7 +144,7 @@ class Register extends Component {
     }
 
     return(
-      <div className="login shadow-sm">
+      <div className="login register shadow-sm">
         <div className="login-body">
             <img className="w-75 mx-auto my-3" src={logoCoolSchool} alt="Logo"/>
             <form onSubmit={this.handleSubmit}>
@@ -200,6 +200,7 @@ class Register extends Component {
                   />
                   <div className="invalid-feedback">{errors.surname}</div>
               </div>
+              <div className="select-role-user">
               <div className="form-check form-check-inline">
                 <input className={`form-check-input ${touch.role && errors.role && 'is-invalid'}`} 
                 type="radio" 
@@ -223,7 +224,7 @@ class Register extends Component {
                 <label className="form-check-label" htmlFor="roleRegister2">Student</label>
                 <div className="invalid-feedback">{errors.role}</div>
               </div>
-              
+              </div>
                 <button type="submit" className="btn btn-info w-100 mt-3">Register</button>
             </form>
             <p className="mx-auto mt-4">If you are "cool" <Link to='/login'> LOGIN </Link></p>        

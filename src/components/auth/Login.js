@@ -101,9 +101,9 @@ class Login extends Component {
     }
     return(
       <>
-      <img className="coolito-login" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito6.png" alt=""/>
-      <div className="login shadow-sm">
       
+      <div className="login shadow-sm">
+      <img className="coolito-login" src="https://res.cloudinary.com/dkgr9dg9n/image/upload/v1553675522/coolSchool/web/coolito6.png" alt=""/>
         <div className="login-body">
           <img className="w-75 mx-auto my-3" src={logoCoolSchool} alt=""/>
           <form onSubmit={this.handleSubmit}>

@@ -31,14 +31,14 @@ class Chat extends Component {
     .then(this.handleShowConversation)
   }
 
-  listRead = () => {
-    chatService.listRead(this.props.classroom.id, this.props.user.id)
-    .then(data => console.log(data))
-  }
+  // listRead = () => {
+  //   chatService.listRead(this.props.classroom.id, this.props.user.id)
+  //   .then(data => console.log(data))
+  // }
 
-  componentDidMount(){
-    this.listRead();
-  }
+  // componentDidMount(){
+  //   this.listRead();
+  // }
 
   handleHideConversation = () => {
     this.setState({

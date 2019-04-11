@@ -48,7 +48,7 @@ class MenuSmartPhone extends Component {
     return(
     <>
     {this.props.back !== false &&
-      <div className="mt-2">
+      <div className="mt-2 nav-menu">
         <span className="menu-generalBtn"onClick={() =>this.setState({ openLeft: !openLeft })}><span className="icon-home-chip"></span></span>
         <div className="container-menu">
           <Drawer
@@ -83,7 +83,7 @@ class MenuSmartPhone extends Component {
         </div>
       </div>}
       {this.props.back === false &&
-      <button  className="" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></button>}
+      <span  className="" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></span>}
     </>
     )
   }

@@ -74,9 +74,9 @@ class Chronometer extends Component{
       <section className="chronometer">
         <h1 className="numbers-chronometer">{this.addZero(minutes)}:{this.addZero(seconds)}:{this.addZero(hundredths)}</h1>
         <div className="buttons-chronometer">
-          <button onClick={this.start} className="text-info">start</button>
-          <button onClick={this.stop} className="text-info">stop</button>
-          <button onClick={this.reset}>reset</button>
+          <span onClick={this.start} className="text-info mr-2">start</span>
+          <span onClick={this.stop} className="text-info mr-2">stop</span>
+          <span onClick={this.reset}>reset</span>
         </div>
     </section>
     )

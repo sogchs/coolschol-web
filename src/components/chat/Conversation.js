@@ -64,7 +64,7 @@ class Conversation extends Component {
   render() {
 
     return (
-      <div className="">
+      <div className="body-conversation">
         <div className="server-card">
           <Button onClick={this.props.hideConversation} className="btn-back"><i className="fas fa-arrow-left"></i></Button>
           <img src={this.props.imageURL} alt=""/>

@@ -23,7 +23,7 @@ const TimeInput = (props) => {
 
 const Button = (props) => {
   return (
-    <button disabled={props.enable} onClick={props.handleButton} className="text-info">{props.buttonText}</button>
+    <span disabled={props.enable} onClick={props.handleButton} className="text-info">{props.buttonText}</span>
   );
 }
 

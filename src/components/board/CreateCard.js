@@ -32,7 +32,7 @@ class CreateCard extends Component {
           filePreview:'',
           dateStart:'',
           dateFinish:'',
-          accountPay:'',
+          accountPay:this.props.classroom.accountPay || '',
           amountPay:'',
           conceptPay:''
         },

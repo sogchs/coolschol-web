@@ -142,7 +142,7 @@ class Profile extends Component {
                   aria-expanded={selector}
                   variant="outline-secondary"
                 >
-                  Select other image
+                  Select other image<i className="fas fa-arrow-down ml-2"></i>
                 </Button>
                 {this.props.user.role === "student" &&
                 <Collapse in={selector}>
