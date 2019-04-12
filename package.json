@@ -27,7 +27,9 @@
     "react-scripts": "2.1.8",
     "react-select": "^2.4.2",
     "react-select-plus": "^1.0.0-rc.3.patch12",
-    "stream-chat-react": "^0.2.2"
+    "stream-chat-react": "^0.2.2",
+    "@fortawesome/fontawesome-free": "^5.8.0",
+    "font-awesome": "^4.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,9 +45,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.0",
-    "font-awesome": "^4.7.0"
-  }
+  ]
 }
