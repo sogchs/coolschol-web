@@ -158,6 +158,7 @@ class Register extends Component {
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.email}
+                  autoComplete="off"
                   />
                   <div className="invalid-feedback">{errors.email}</div>
               </div>
@@ -171,6 +172,7 @@ class Register extends Component {
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.password}
+                  autoComplete="off"
                   />
                   <div className="invalid-feedback">{errors.password}</div>
               </div>
@@ -184,6 +186,7 @@ class Register extends Component {
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.name}
+                  autoComplete="off"
                   />
                   <div className="invalid-feedback">{errors.name}</div>
               </div>
@@ -197,6 +200,7 @@ class Register extends Component {
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
                   value={user.surname}
+                  autoComplete="off"
                   />
                   <div className="invalid-feedback">{errors.surname}</div>
               </div>
