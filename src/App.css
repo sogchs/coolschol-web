@@ -125,9 +125,9 @@
     padding-top: 5px;
   }
   .board-students {
-    margin: 1em;
+    margin: 0.6em;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-end;
   }
 
