@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-brands-400.24a77b8b.woff2"
   },
   {
-    "revision": "8d98fa4d05d281ae97ca",
-    "url": "/web-coolSchool/static/css/main.a8c2d6eb.chunk.css"
+    "revision": "9311a0070b8ab6b3673c",
+    "url": "/web-coolSchool/static/css/main.a1d5a863.chunk.css"
   },
   {
     "revision": "b6267d5a52c8561a5dae",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-regular-400.7599ecd0.ttf"
   },
   {
-    "revision": "8d98fa4d05d281ae97ca",
+    "revision": "9311a0070b8ab6b3673c",
     "url": "/web-coolSchool/static/js/main.24706bfd.chunk.js"
   },
   {
@@ -104,12 +104,12 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-solid-900.e474ff3a.svg"
   },
   {
-    "revision": "d17bca78cf794c7324528ade9cafa1c5",
-    "url": "/web-coolSchool/static/media/icomoon.d17bca78.ttf"
-  },
-  {
     "revision": "db97a6dbb538bd3d46993729f1c120a4",
     "url": "/web-coolSchool/static/media/icomoon.db97a6db.woff"
+  },
+  {
+    "revision": "d17bca78cf794c7324528ade9cafa1c5",
+    "url": "/web-coolSchool/static/media/icomoon.d17bca78.ttf"
   },
   {
     "revision": "eb34b2bc94a27c5472419e0293ec85db",
@@ -120,7 +120,7 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/css/2.d32aa70c.chunk.css"
   },
   {
-    "revision": "7b114991991e1ba83b9df6d5f567765f",
+    "revision": "2da68a7881e6f9d382d9e5436b660265",
     "url": "/web-coolSchool/index.html"
   }
 ];
