@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-brands-400.24a77b8b.woff2"
   },
   {
-    "revision": "044f05243f5817099d91",
+    "revision": "dde97f696ea9778d7547",
     "url": "/web-coolSchool/static/css/main.a8c2d6eb.chunk.css"
   },
   {
@@ -32,12 +32,12 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "b06871f281fee6b241d60582ae9369b9",
-    "url": "/web-coolSchool/static/media/fontawesome-webfont.b06871f2.ttf"
-  },
-  {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
     "url": "/web-coolSchool/static/media/fontawesome-webfont.674f50d2.eot"
+  },
+  {
+    "revision": "b06871f281fee6b241d60582ae9369b9",
+    "url": "/web-coolSchool/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
     "revision": "912ec66d7572ff821749319396470bde",
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-regular-400.7599ecd0.ttf"
   },
   {
-    "revision": "044f05243f5817099d91",
-    "url": "/web-coolSchool/static/js/main.8cc3b4ee.chunk.js"
+    "revision": "dde97f696ea9778d7547",
+    "url": "/web-coolSchool/static/js/main.89442ccb.chunk.js"
   },
   {
     "revision": "fb4ea3247aace8c1c8bcf904772a91c7",
@@ -120,7 +120,7 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/css/2.d32aa70c.chunk.css"
   },
   {
-    "revision": "a1e033a96afb7258f5feff46d86bdc4f",
+    "revision": "0dfc9cba023aa999d0781e351e2bb0a8",
     "url": "/web-coolSchool/index.html"
   }
 ];
