@@ -459,11 +459,10 @@
   margin: -124px 0 0 179px;
 }
 
-.slect-role-user{
+.select-role-user{
   display: flex;
   justify-content: space-around;
 }
-
 /* ************* CLASSROOM ************* */
 .classroom{
   display: flex;

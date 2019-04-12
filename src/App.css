@@ -525,7 +525,10 @@
   position: fixed;
   margin: -120px 0 0 103px;
 }
-
+.select-role-user{
+  display: flex;
+  justify-content: space-around;
+}
 /* ************* CLASSROOM ************* */
 .classroom{
   display: flex;
