@@ -32,12 +32,12 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "674f50d287a8c48dc19ba404d20fe713",
-    "url": "/web-coolSchool/static/media/fontawesome-webfont.674f50d2.eot"
-  },
-  {
     "revision": "b06871f281fee6b241d60582ae9369b9",
     "url": "/web-coolSchool/static/media/fontawesome-webfont.b06871f2.ttf"
+  },
+  {
+    "revision": "674f50d287a8c48dc19ba404d20fe713",
+    "url": "/web-coolSchool/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
     "revision": "912ec66d7572ff821749319396470bde",
@@ -104,12 +104,12 @@ self.__precacheManifest = [
     "url": "/web-coolSchool/static/media/fa-solid-900.e474ff3a.svg"
   },
   {
-    "revision": "db97a6dbb538bd3d46993729f1c120a4",
-    "url": "/web-coolSchool/static/media/icomoon.db97a6db.woff"
-  },
-  {
     "revision": "d17bca78cf794c7324528ade9cafa1c5",
     "url": "/web-coolSchool/static/media/icomoon.d17bca78.ttf"
+  },
+  {
+    "revision": "db97a6dbb538bd3d46993729f1c120a4",
+    "url": "/web-coolSchool/static/media/icomoon.db97a6db.woff"
   },
   {
     "revision": "eb34b2bc94a27c5472419e0293ec85db",
