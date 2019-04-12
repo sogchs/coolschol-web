@@ -19,9 +19,7 @@ import DetailStudent from './components/classroom/DetailStudent';
 import Profile from './components/auth/Profile';
 import EditClassroom from './components/classroom/EditClassroom';
 import Student from './components/student/Student';
-import Index from './components/auth/Index';
-
-
+import HomeCool from './components/auth/HomeCool';
 
 class App extends Component {
 
@@ -35,7 +33,7 @@ class App extends Component {
         </Switch>
 
         <Switch>
-          <Route exact path="/" component={Index} />
+          <Route exact path="/" component={HomeCool} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/home" component={Home} />

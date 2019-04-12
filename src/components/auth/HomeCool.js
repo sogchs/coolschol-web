@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-class Index extends Component {
+class HomeCool extends Component {
   
   render() {
 
@@ -19,4 +19,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default HomeCool;
