@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/web-coolSchool/precache-manifest.c44382e86a5abfd4cc6a662ebe6fa003.js"
+  "/web-coolSchool/precache-manifest.9502bbbaf1da2f7aec5fe55866654263.js"
 );
 
 workbox.clientsClaim();
