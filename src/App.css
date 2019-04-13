@@ -350,6 +350,10 @@
   border: 2px solid lightgrey;
   background-color: rgb(240, 240, 240);
 }
+
+.column-item a{
+  text-decoration-line: none;
+}
 .card-item {
   border-radius: 3px;
   border: 1px solid lightgrey;

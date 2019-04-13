@@ -73,7 +73,7 @@ class CreateColumn extends Component {
     return(
       <div>
           {this.props.user.role === "teacher" &&
-          <Button variant="column-add btn btn-outline-info mt-3" onClick={this.handleShow}>+ New Column</Button>
+          <Button variant="column-add btn btn-outline-info mt-3 mr-2" onClick={this.handleShow}>+ New Column</Button>
             }
           <Modal show={show} onHide={this.handleClose}>
             <Modal.Header closeButton>
