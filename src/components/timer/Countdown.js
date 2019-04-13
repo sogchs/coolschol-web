@@ -29,7 +29,7 @@ const Button = (props) => {
 
 const Reset = (props) => {
   return (
-    <button id="reset" onClick={props.handleReset}>reset</button>
+    <span id="reset" onClick={props.handleReset}>reset</span>
   );
 }
 class Countdown extends Component{

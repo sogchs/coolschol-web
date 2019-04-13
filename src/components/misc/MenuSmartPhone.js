@@ -77,7 +77,7 @@ class MenuSmartPhone extends Component {
                 <Link to="/classroom-edit" onClick={() => this.setState({ openLeft: false })}><span className="icon-set-classroom"></span></Link>}
                 <Link to="/profile" onClick={() => this.setState({ openLeft: false })}><span className="icon-set-profile"></span></Link>
               </div>
-              <button  className="text-info btn-logout-menu" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></button>
+              <span  className="text-info btn-logout-menu" onClick={() => this.handleLogout()}><span className="icon-log-out"></span></span>
             </div>
           </Drawer>
         </div>
