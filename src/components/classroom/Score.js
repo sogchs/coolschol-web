@@ -24,7 +24,7 @@ class Score extends Component {
             type:'',
             reason:'For question in classroom',
             students:[],
-            scoreNumber: '1',
+            scoreNumber: 1,
             classroom:''
         },
         touch: {},
