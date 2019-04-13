@@ -34,7 +34,15 @@ class Score extends Component {
     }
 
     handleClose = () => {
-        this.setState({ show: false });
+        this.setState({ show: false,
+            score: {
+                type:'',
+                reason:'For question in classroom',
+                students:[],
+                scoreNumber: 1,
+                classroom:''
+            }, selector: false
+        });
       }
     
     handleShow = () => {
@@ -86,7 +94,16 @@ class Score extends Component {
         
         const scoreData = { ...this.state.score }
         classroomService.createScore(scoreData)
-        .then(this.setState({ show: false }))
+        .then(this.setState({ 
+            show: false,
+            score: {
+                type:'',
+                reason:'For question in classroom',
+                students:[],
+                scoreNumber: 1,
+                classroom:''
+            }
+         }))
         .then(this.props.deselectAll) 
       }
 

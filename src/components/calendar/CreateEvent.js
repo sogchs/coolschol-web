@@ -76,10 +76,21 @@ class CreateEvent extends Component {
 
     calendarService.createEvent(this.state.event)
     .then(this.props.fetchEvents)
-    .then(this.setState({ show: false }))
+    .then(this.handleClose())
   }
 
-  handleClose = () => {this.setState({ show: false });}
+  handleClose = () => {this.setState({ show: false,
+    event: {
+      title: '',
+      classroom: this.props.classroom.id,
+      start: '',
+      end: '',
+      role: '',
+      color: ''
+    },
+    errors: {
+      title: true
+    } });}
 
   handleShow = () => {this.setState({ show: true });}
 

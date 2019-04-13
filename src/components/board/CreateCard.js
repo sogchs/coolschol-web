@@ -102,7 +102,19 @@ class CreateCard extends Component {
         .then(this.props.fetchColumns)
     }
 
-    handleClose = () => {this.setState({ show: false });}
+    handleClose = () => {this.setState({ show: false,
+      card: {
+        title: '',
+        description: '',
+        column: this.props.columnId,
+        attachFiles: [],
+        filePreview:'',
+        dateStart:'',
+        dateFinish:'',
+        accountPay:this.props.classroom.accountPay || '',
+        amountPay:'',
+        conceptPay:''
+      }, date: false, pay: false, attach: false, addEvent: false});}
 
     handleShow = () => {this.setState({ show: true });}
 

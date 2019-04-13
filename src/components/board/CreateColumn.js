@@ -51,10 +51,18 @@ class CreateColumn extends Component {
     }
     boardService.createColumn(column)
     .then(this.props.fetchColumns)
-    .then(this.setState({ show: false }))
+    .then(this.handleClose())
   }
 
-  handleClose = () => {this.setState({ show: false });}
+  handleClose = () => {this.setState({ show: false,
+    column: {
+      title: '',
+      classroom: this.props.classroom.id
+    },
+    errors: {
+      title: true
+    }
+   });}
 
   handleShow = () => {this.setState({ show: true });}
 

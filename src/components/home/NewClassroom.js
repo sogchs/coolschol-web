@@ -51,10 +51,16 @@ class NewClassroom extends Component {
     }
     classroomService.createClassroom(classroomData)
     .then(this.props.fetchClassrooms)
-    .then(this.setState({ show: false }))
+    .then(this.handleClose())
   }
 
-  handleClose = () => {this.setState({ show: false });}
+  handleClose = () => {this.setState({ show: false,
+    classroom: {
+      title: ''
+    },
+    errors: {
+      title: true
+    } });}
 
   handleShow = () => {this.setState({ show: true });}
 

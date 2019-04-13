@@ -133,6 +133,9 @@
     margin-left: 10px;
     margin-right: 25px;
   }
+  .modal-title{
+    font-family: Lobster;
+  }
 
   /* *********** NAVS ************ */
   .logo{
@@ -244,6 +247,7 @@
   font-weight: 300;
   margin-left: 10px;
   margin-right: 30px;
+  font-family: Lobster;
 }
 
 /* ************* BOARD ****************** */
@@ -751,6 +755,7 @@
 .detail-name{
   font-size: 2em;
   margin: 0;
+  font-family: Lobster;
 }
 .detail-email{
   font-size: 1em;

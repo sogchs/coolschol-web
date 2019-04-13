@@ -106,10 +106,25 @@ class NewGroup extends Component {
     }
     groupService.createGroup(groupData)
     .then(this.props.fetchGroups)
-    .then(this.setState({ show: false }))
+    .then(this.handleClose())
   }
 
-  handleClose = () => {this.setState({ show: false });}
+  handleClose = () => {this.setState({ group: {
+    title: '',
+    subgroups: {
+      'group-1': []
+    },
+    classroom: this.props.classroom.id
+  },
+  errors: {
+    title: validations.title()
+  },
+  touch: {},
+  show: false,
+  selectedOption: '',
+  selectedOption2: '',
+  options: [],
+  selectableOptions:[] });}
 
   handleShow = () => {this.setState({ show: true });}
 
