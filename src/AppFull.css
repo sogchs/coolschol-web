@@ -256,8 +256,10 @@
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
-  justify-content: center;
   align-items: end;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 20px 65px;
 }
 
 .column-item{
@@ -269,6 +271,7 @@
   border: 2px solid lightgrey;
   background-color: rgb(240, 240, 240);
   margin-right: 10px;
+  flex-shrink: 0;
 }
 .card-item {
   border-radius: 3px;
@@ -320,7 +323,9 @@
   color: rgb(30, 163, 183)
 }
 
-
+.btn-column-add{
+  width: max-content;
+}
 
 /* ******* CHAT ********* */
 
@@ -601,7 +606,7 @@
   color: white;
   padding: 10px;
   margin-bottom: 10px;
-  width: 360px;
+  width: 600px;
 }
 
 .container-subgroups{
